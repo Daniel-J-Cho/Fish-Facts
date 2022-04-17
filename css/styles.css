@@ -1,0 +1,120 @@
+* {
+  font-family: "open sans", sans-serif;
+}
+
+h1 {
+  font-family: "Proza Libre", sans-serif;
+}
+
+.arrow {
+  font-size: 5rem;
+  color: black;
+}
+
+.arrow-link {
+  text-decoration: none;
+}
+
+.row {
+  display: flex;
+}
+
+.column-full.header {
+  display: flex;
+  background-color: #c4c4c4;
+}
+
+.favorites-h2 {
+  margin-left: 100px;
+}
+
+main {
+  width: 90%;
+  height: 47rem;
+  background-color: #f5f7f7;
+  margin: 3rem auto;
+}
+
+.select-tab-container {
+  height: 4rem;
+}
+
+select {
+  height: 32px;
+  border-radius: 5px;
+}
+
+.species {
+  overflow: auto;
+}
+
+.species-h3 {
+  font-family: "Cormorant SC", serif;
+}
+
+.tab {
+  width: 10rem;
+  background-color: #c4c4c4;
+  text-align: center;
+  border-radius: 5px;
+  height: 32px;
+  line-height: 32px;
+  cursor: pointer;
+}
+
+.tab.active {
+  width: 10rem;
+  background-color: #52e0f3;
+  color: white;
+  text-align: center;
+  border-radius: 5px;
+  height: 32px;
+  line-height: 32px;
+  cursor: pointer;
+}
+
+/* text boxes */
+.species-name-text,
+.calories-text,
+.carbohydrates-text,
+.cholesterol-text,
+.fat-content-text,
+.health-benefits-text,
+.taste-text {
+  width: 100%;
+  background-color: white;
+  border: 0.5px solid black;
+  border-radius: 5px;
+  height: 3.5rem;
+  line-height: 3.5rem;
+}
+
+.biology-text {
+  width: 100%;
+  background-color: white;
+  border: 0.5px solid black;
+  border-radius: 5px;
+  height: 11rem;
+  line-height: 11rem;
+  overflow: auto;
+}
+
+.habitat-text {
+  width: 100%;
+  background-color: white;
+  border: 0.5px solid black;
+  border-radius: 5px;
+  height: 11rem;
+  line-height: 11rem;
+  overflow: auto;
+}
+
+.fun-fact-text {
+  width: 100%;
+  background-color: white;
+  border: 0.5px solid black;
+  border-radius: 5px;
+  height: 3.5rem;
+  line-height: 3.5rem;
+  overflow: auto;
+}
