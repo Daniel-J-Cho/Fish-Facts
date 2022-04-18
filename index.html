@@ -26,37 +26,43 @@
       </div>
     </header>
     <main>
-      <div class="row">
-        <div class="select-tab-container column-full justify-center align-center">
-          <select name="species" id="species" class="species">
-            <option value="" disabled selected>Select a species</option>
-          </select>
-          <div class="tab active" data-view="images">Images</div>
-          <div class="tab" data-view="general">General Facts</div>
-          <div class="tab" data-view="nutritional">Nutritional Facts</div>
-          <div class="tab" data-view="favorites">Favorites</div>
-        </div>
+      <div class="row select-tab-container column-full justify-center align-center">
+        <select name="species" id="species" class="species">
+          <option value="" disabled selected>Select a species</option>
+        </select>
+        <div class="tab active" data-view="images">Images</div>
+        <div class="tab" data-view="general">General Facts</div>
+        <div class="tab" data-view="nutritional">Nutritional Facts</div>
+        <div class="tab" data-view="favorites">Favorites</div>
       </div>
       <div class="row view-container">
         <div class="view column-full" data-view="images">
-          <h3 class="species-h3"></h3>
-          <img class="species-image" src="images/favicon.ico" alt="fav-icon-image">
-          <div class="arrow-row">
+          <h3 class="species-h3 text-align-center"></h3>
+          <div class="image-arrows-container">
             <a href="#" class="arrow-link">
               <i class="fas fa-angle-left arrow"></i>
             </a>
+            <div class="image-container justify-center">
+              <img class="species-image" src="images/placeholder.png" alt="Select a species">
+            </div>
             <a href="#" class="arrow=link">
               <i class="fas fa-angle-right arrow"></i>
             </a>
           </div>
+
+
+          <div class="arrow-row">
+
+
+          </div>
         </div>
-        <div class="view column-full hidden " data-view="general">
+        <div class="view column-full hidden" data-view="general">
           <div class="species-name-text">Species Name:</div>
           <div class="biology-text">Biology:</div>
           <div class="habitat-text">Habitat:</div>
           <div class="fun-fact-text">Fun Fact:</div>
         </div>
-        <div class="view column-full hidden " data-view="nutritional">
+        <div class="view column-full hidden" data-view="nutritional">
           <div class="calories-text">Calories:</div>
           <div class="carbohydrates-text">Carbohydrates:</div>
           <div class="cholesterol-text">Cholesterol:</div>
@@ -64,7 +70,7 @@
           <div class="health-benefits-text">Health Benefits:</div>
           <div class="taste-text">Taste:</div>
         </div>
-        <div class="view column-full hidden " data-view="favorites">
+        <div class="view column-full hidden" data-view="favorites">
           <h2 class="favorites-h2">FAVORITES</h2>
         </div>
       </div>

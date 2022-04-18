@@ -52,6 +52,12 @@ select {
   font-family: "Cormorant SC", serif;
 }
 
+.species-image {
+  width: 80%;
+  height: 35rem;
+  object-fit: contain;
+}
+
 .tab {
   width: 10rem;
   background-color: #c4c4c4;

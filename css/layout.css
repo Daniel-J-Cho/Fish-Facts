@@ -23,6 +23,22 @@
   margin: 0 50px;
 }
 
+.image-arrows-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 50px;
+}
+
+.image-container {
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  width: 80%;
+  height: 35rem;
+  background-color: white;
+}
+
 .justify-center {
   justify-content: center;
 }
@@ -32,6 +48,11 @@
   margin-top: 20px;
 }
 
+.text-align-center {
+  text-align: center;
+}
+
+/* text boxes */
 .species-name-text,
 .calories-text {
   margin-top: 50px;
