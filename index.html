@@ -8,12 +8,73 @@
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+SC&family=Open+Sans:wght@300;400&family=Proza+Libre&display=swap"
+    rel="stylesheet">
+
 </head>
 <body>
-  <header>
-  </header>
-  <main>
-  </main>
+  <div id="container" class="container">
+    <header>
+      <div class="row">
+        <div class="column-full header justify-center">
+          <h1>FISH FACTS</h1>
+        </div>
+      </div>
+    </header>
+    <main>
+      <!-- <div class="row column-half justify-center align-center">
+
+      </div> -->
+      <div class="row select-tab-container column-full justify-center align-center">
+        <select name="species" id="species" class="species">
+          <option value="" disabled selected>Select a species</option>
+        </select>
+        <div class="tab active" data-view="images">Images</div>
+        <div class="tab" data-view="general">General</div>
+        <div class="tab" data-view="nutritional">Nutrition</div>
+        <div class="tab" data-view="favorites">Favorites</div>
+      </div>
+      <div class="row view-container">
+        <div class="view column-full" data-view="images">
+          <h3 class="species-h3 text-align-center"></h3>
+          <div class="image-arrows-container">
+            <a href="#" class="arrow-link">
+              <i class="fas fa-angle-left arrow"></i>
+            </a>
+            <div class="image-container justify-center">
+              <img class="species-image" src="images/placeholder.png" alt="Select a species">
+            </div>
+            <a href="#" class="arrow=link">
+              <i class="fas fa-angle-right arrow"></i>
+            </a>
+          </div>
+          <div class="arrow-row">
+          </div>
+        </div>
+        <div class="view column-full hidden" data-view="general">
+          <div class="species-name-text">Species Name:</div>
+          <div class="biology-text">Biology:</div>
+          <div class="habitat-text">Habitat:</div>
+          <div class="fun-fact-text">Fun Fact:</div>
+        </div>
+        <div class="view column-full hidden" data-view="nutritional">
+          <div class="calories-text">Calories:</div>
+          <div class="carbohydrates-text">Carbohydrates:</div>
+          <div class="cholesterol-text">Cholesterol:</div>
+          <div class="fat-content-text">Fat Content:</div>
+          <div class="health-benefits-text">Health Benefits:</div>
+          <div class="taste-text">Taste:</div>
+        </div>
+        <div class="view column-full hidden" data-view="favorites">
+          <h2 class="favorites-h2">FAVORITES</h2>
+        </div>
+      </div>
+    </main>
+  </div>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
 </body>

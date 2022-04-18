@@ -1,0 +1,92 @@
+.hidden {
+  display: none !important;
+}
+
+.container {
+  max-width: 575px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.column-full,
+.column-half {
+  width: 100%;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.arrow-row {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 20px;
+}
+
+.image-arrows-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 20px;
+}
+
+.image-container {
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  width: 80%;
+  height: 35rem;
+  background-color: white;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.select-tab-container {
+  display: flex;
+  margin-top: 20px;
+}
+
+.text-align-center {
+  text-align: center;
+}
+
+/* text boxes */
+.species-name-text,
+.calories-text {
+  margin-top: 50px;
+}
+
+.species-name-text,
+.biology-text,
+.habitat-text,
+.fun-fact-text,
+.calories-text,
+.carbohydrates-text,
+.cholesterol-text,
+.fat-content-text,
+.health-benefits-text,
+.taste-text {
+  padding-left: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 1300px;
+  }
+
+  .column-full,
+  .column-half {
+    padding: 0 0.75rem;
+  }
+
+  .column-half {
+    width: 50%;
+  }
+
+  .species {
+    width: 220px;
+    overflow: auto;
+  }
+}
