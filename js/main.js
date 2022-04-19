@@ -79,7 +79,7 @@ $species.addEventListener('change', function (event) {
             $funFactText.textContent = 'Fun Fact: ' + ' ' + xhr.response[j - 1].Quote;
             $biologyText.textContent = 'Biology: ' + ' ' + xhr.response[j - 1].Biology;
             $habitatText.textContent = 'Habitat: ' + ' ' + xhr.response[j - 1].Habitat;
-            $caloriesText.textContent = 'Calories: ' + ' ' + xhr.response[j - 1].Calories;
+            $caloriesText.textContent = 'Calories: ' + ' ' + xhr.response[j - 1].Calories + ' cal';
             $carbohydratesText.textContent = 'Carbohydrates: ' + ' ' + xhr.response[j - 1].Carbohydrate;
             $cholesterolText.textContent = 'Cholesterol: ' + ' ' + xhr.response[j - 1].Cholesterol;
             $fatContentText.textContent = 'Fat Content: ' + ' ' + xhr.response[j - 1]['Fat, Total'];
@@ -124,74 +124,94 @@ var $leftArrow = document.querySelector('.prev-img');
 var $rightArrow = document.querySelector('.next-img');
 
 $leftArrow.addEventListener('click', function (event) {
+  var currImgSrcL = $img.getAttribute('src');
   for (var i = 0; i < xhr.response.length; i++) {
-    if ($img.getAttribute('src') === xhr.response[i]['Image Gallery'][0].src) {
-      if (xhr.response[i]['Image Gallery'][0].src === null) {
-        $img.setAttribute('src', 'images/placeholder.png');
-      } else {
+    if (Array.isArray(xhr.response[i]['Image Gallery']) && xhr.response[i]['Image Gallery'].length === 5) {
+      if (currImgSrcL === xhr.response[i]['Image Gallery'][0].src) {
         $img.setAttribute('src', xhr.response[i]['Image Gallery'][4].src);
-      }
-    } else if ($img.getAttribute('src') === xhr.response[i]['Image Gallery'][4].src) {
-      if (xhr.response[i]['Image Gallery'][4].src === null) {
-        $img.setAttribute('src', 'images/placeholder.png');
-      } else {
+      } else if (currImgSrcL === xhr.response[i]['Image Gallery'][4].src) {
         $img.setAttribute('src', xhr.response[i]['Image Gallery'][3].src);
-      }
-    } else if ($img.getAttribute('src') === xhr.response[i]['Image Gallery'][3].src) {
-      if (xhr.response[i]['Image Gallery'][3].src === null) {
-        $img.setAttribute('src', 'images/placeholder.png');
-      } else {
+      } else if (currImgSrcL === xhr.response[i]['Image Gallery'][3].src) {
         $img.setAttribute('src', xhr.response[i]['Image Gallery'][2].src);
-      }
-    } else if ($img.getAttribute('src') === xhr.response[i]['Image Gallery'][2].src) {
-      if (xhr.response[i]['Image Gallery'][2].src === null) {
-        $img.setAttribute('src', 'images/placeholder.png');
-      } else {
+      } else if (currImgSrcL === xhr.response[i]['Image Gallery'][2].src) {
         $img.setAttribute('src', xhr.response[i]['Image Gallery'][1].src);
-      }
-    } else if ($img.getAttribute('src') === xhr.response[i]['Image Gallery'][1].src) {
-      if (xhr.response[i]['Image Gallery'][1].src === null) {
-        $img.setAttribute('src', 'images/placeholder.png');
-      } else {
+      } else if (currImgSrcL === xhr.response[i]['Image Gallery'][1].src) {
         $img.setAttribute('src', xhr.response[i]['Image Gallery'][0].src);
       }
+    } else if (Array.isArray(xhr.response[i]['Image Gallery']) && xhr.response[i]['Image Gallery'].length === 4) {
+      if (currImgSrcL === xhr.response[i]['Image Gallery'][0].src) {
+        $img.setAttribute('src', xhr.response[i]['Image Gallery'][3].src);
+      } else if (currImgSrcL === xhr.response[i]['Image Gallery'][3].src) {
+        $img.setAttribute('src', xhr.response[i]['Image Gallery'][2].src);
+      } else if (currImgSrcL === xhr.response[i]['Image Gallery'][2].src) {
+        $img.setAttribute('src', xhr.response[i]['Image Gallery'][1].src);
+      } else if (currImgSrcL === xhr.response[i]['Image Gallery'][1].src) {
+        $img.setAttribute('src', xhr.response[i]['Image Gallery'][0].src);
+      }
+    } else if (Array.isArray(xhr.response[i]['Image Gallery']) && xhr.response[i]['Image Gallery'].length === 3) {
+      if (currImgSrcL === xhr.response[i]['Image Gallery'][0].src) {
+        $img.setAttribute('src', xhr.response[i]['Image Gallery'][2].src);
+      } else if (currImgSrcL === xhr.response[i]['Image Gallery'][2].src) {
+        $img.setAttribute('src', xhr.response[i]['Image Gallery'][1].src);
+      } else if (currImgSrcL === xhr.response[i]['Image Gallery'][1].src) {
+        $img.setAttribute('src', xhr.response[i]['Image Gallery'][0].src);
+      }
+    } else if (Array.isArray(xhr.response[i]['Image Gallery']) && xhr.response[i]['Image Gallery'].length === 2) {
+      if (currImgSrcL === xhr.response[i]['Image Gallery'][0].src) {
+        $img.setAttribute('src', xhr.response[i]['Image Gallery'][1].src);
+      } else if (currImgSrcL === xhr.response[i]['Image Gallery'][1].src) {
+        $img.setAttribute('src', xhr.response[i]['Image Gallery'][0].src);
+      }
+    } else {
+      if (currImgSrcL === xhr.response[i]['Image Gallery']) {
+        break;
+      }
     }
-    // console.log("xhr.response[i]['Image Gallery'][0].src", xhr.response[i]['Image Gallery'][0].src);
   }
-  // console.log('i:', i);
 });
 
 $rightArrow.addEventListener('click', function (event) {
+  var currImgSrcR = $img.getAttribute('src');
   for (var i = 0; i < xhr.response.length; i++) {
-    if ($img.getAttribute('src') === xhr.response[i]['Image Gallery'][0].src) {
-      if (xhr.response[i]['Image Gallery'][0].src === null) {
-        $img.setAttribute('src', 'images/placeholder.png');
-      } else {
+    if (Array.isArray(xhr.response[i]['Image Gallery']) && xhr.response[i]['Image Gallery'].length === 5) {
+      if (currImgSrcR === xhr.response[i]['Image Gallery'][0].src) {
         $img.setAttribute('src', xhr.response[i]['Image Gallery'][1].src);
-      }
-    } else if ($img.getAttribute('src') === xhr.response[i]['Image Gallery'][1].src) {
-      if (xhr.response[i]['Image Gallery'][1].src === null) {
-        $img.setAttribute('src', 'images/placeholder.png');
-      } else {
+      } else if (currImgSrcR === xhr.response[i]['Image Gallery'][1].src) {
         $img.setAttribute('src', xhr.response[i]['Image Gallery'][2].src);
-      }
-    } else if ($img.getAttribute('src') === xhr.response[i]['Image Gallery'][2].src) {
-      if (xhr.response[i]['Image Gallery'][2].src === null) {
-        $img.setAttribute('src', 'images/placeholder.png');
-      } else {
+      } else if (currImgSrcR === xhr.response[i]['Image Gallery'][2].src) {
         $img.setAttribute('src', xhr.response[i]['Image Gallery'][3].src);
-      }
-    } else if ($img.getAttribute('src') === xhr.response[i]['Image Gallery'][3].src) {
-      if (xhr.response[i]['Image Gallery'][3].src === null) {
-        $img.setAttribute('src', 'images/placeholder.png');
-      } else {
+      } else if (currImgSrcR === xhr.response[i]['Image Gallery'][3].src) {
         $img.setAttribute('src', xhr.response[i]['Image Gallery'][4].src);
-      }
-    } else if ($img.getAttribute('src') === xhr.response[i]['Image Gallery'][4].src) {
-      if (xhr.response[i]['Image Gallery'][4].src === null) {
-        $img.setAttribute('src', 'images/placeholder.png');
-      } else {
+      } else if (currImgSrcR === xhr.response[i]['Image Gallery'][4].src) {
         $img.setAttribute('src', xhr.response[i]['Image Gallery'][0].src);
+      }
+    } else if (Array.isArray(xhr.response[i]['Image Gallery']) && xhr.response[i]['Image Gallery'].length === 4) {
+      if (currImgSrcR === xhr.response[i]['Image Gallery'][0].src) {
+        $img.setAttribute('src', xhr.response[i]['Image Gallery'][1].src);
+      } else if (currImgSrcR === xhr.response[i]['Image Gallery'][1].src) {
+        $img.setAttribute('src', xhr.response[i]['Image Gallery'][2].src);
+      } else if (currImgSrcR === xhr.response[i]['Image Gallery'][2].src) {
+        $img.setAttribute('src', xhr.response[i]['Image Gallery'][3].src);
+      } else if (currImgSrcR === xhr.response[i]['Image Gallery'][3].src) {
+        $img.setAttribute('src', xhr.response[i]['Image Gallery'][0].src);
+      }
+    } else if (Array.isArray(xhr.response[i]['Image Gallery']) && xhr.response[i]['Image Gallery'].length === 3) {
+      if (currImgSrcR === xhr.response[i]['Image Gallery'][0].src) {
+        $img.setAttribute('src', xhr.response[i]['Image Gallery'][1].src);
+      } else if (currImgSrcR === xhr.response[i]['Image Gallery'][1].src) {
+        $img.setAttribute('src', xhr.response[i]['Image Gallery'][2].src);
+      } else if (currImgSrcR === xhr.response[i]['Image Gallery'][2].src) {
+        $img.setAttribute('src', xhr.response[i]['Image Gallery'][0].src);
+      }
+    } else if (Array.isArray(xhr.response[i]['Image Gallery']) && xhr.response[i]['Image Gallery'].length === 2) {
+      if (currImgSrcR === xhr.response[i]['Image Gallery'][0].src) {
+        $img.setAttribute('src', xhr.response[i]['Image Gallery'][1].src);
+      } else if (currImgSrcR === xhr.response[i]['Image Gallery'][1].src) {
+        $img.setAttribute('src', xhr.response[i]['Image Gallery'][0].src);
+      }
+    } else {
+      if (currImgSrcR === xhr.response[i]['Image Gallery']) {
+        break;
       }
     }
   }
