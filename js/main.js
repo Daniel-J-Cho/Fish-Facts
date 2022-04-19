@@ -85,6 +85,20 @@ $species.addEventListener('change', function (event) {
             $fatContentText.textContent = 'Fat Content: ' + ' ' + xhr.response[j - 1]['Fat, Total'];
             $healthBenefitsText.textContent = 'Health Benefits: ' + ' ' + xhr.response[j - 1]['Health Benefits'];
             $tasteText.textContent = 'Taste: ' + ' ' + xhr.response[j - 1].Taste;
+          } else if (xhr.response[j - 1]['Image Gallery'][0] === undefined) {
+            $speciesH3.textContent = xhr.response[j - 1]['Species Name'];
+            $img.setAttribute('src', xhr.response[j - 1]['Image Gallery'].src);
+            $img.setAttribute('alt', xhr.response[j - 1]['Image Gallery'].alt);
+            $speciesText.textContent = 'Species Name: ' + ' ' + xhr.response[j - 1]['Species Name'];
+            $funFactText.textContent = 'Fun Fact: ' + ' ' + xhr.response[j - 1].Quote;
+            $biologyText.textContent = 'Biology: ' + ' ' + xhr.response[j - 1].Biology;
+            $habitatText.textContent = 'Habitat: ' + ' ' + xhr.response[j - 1].Habitat;
+            $caloriesText.textContent = 'Calories: ' + ' ' + xhr.response[j - 1].Calories + ' cal';
+            $carbohydratesText.textContent = 'Carbohydrates: ' + ' ' + xhr.response[j - 1].Carbohydrate;
+            $cholesterolText.textContent = 'Cholesterol: ' + ' ' + xhr.response[j - 1].Cholesterol;
+            $fatContentText.textContent = 'Fat Content: ' + ' ' + xhr.response[j - 1]['Fat, Total'];
+            $healthBenefitsText.textContent = 'Health Benefits: ' + ' ' + xhr.response[j - 1]['Health Benefits'];
+            $tasteText.textContent = 'Taste: ' + ' ' + xhr.response[j - 1].Taste;
           } else {
             $speciesH3.textContent = xhr.response[j - 1]['Species Name'];
             $img.setAttribute('src', xhr.response[j - 1]['Image Gallery'][0].src);
@@ -101,6 +115,83 @@ $species.addEventListener('change', function (event) {
             $tasteText.textContent = 'Taste: ' + ' ' + xhr.response[j - 1].Taste;
           }
         }
+      }
+    }
+  }
+});
+
+var $leftArrow = document.querySelector('.prev-img');
+var $rightArrow = document.querySelector('.next-img');
+
+$leftArrow.addEventListener('click', function (event) {
+  for (var i = 0; i < xhr.response.length; i++) {
+    if ($img.getAttribute('src') === xhr.response[i]['Image Gallery'][0].src) {
+      if (xhr.response[i]['Image Gallery'][0].src === null) {
+        $img.setAttribute('src', 'images/placeholder.png');
+      } else {
+        $img.setAttribute('src', xhr.response[i]['Image Gallery'][4].src);
+      }
+    } else if ($img.getAttribute('src') === xhr.response[i]['Image Gallery'][4].src) {
+      if (xhr.response[i]['Image Gallery'][4].src === null) {
+        $img.setAttribute('src', 'images/placeholder.png');
+      } else {
+        $img.setAttribute('src', xhr.response[i]['Image Gallery'][3].src);
+      }
+    } else if ($img.getAttribute('src') === xhr.response[i]['Image Gallery'][3].src) {
+      if (xhr.response[i]['Image Gallery'][3].src === null) {
+        $img.setAttribute('src', 'images/placeholder.png');
+      } else {
+        $img.setAttribute('src', xhr.response[i]['Image Gallery'][2].src);
+      }
+    } else if ($img.getAttribute('src') === xhr.response[i]['Image Gallery'][2].src) {
+      if (xhr.response[i]['Image Gallery'][2].src === null) {
+        $img.setAttribute('src', 'images/placeholder.png');
+      } else {
+        $img.setAttribute('src', xhr.response[i]['Image Gallery'][1].src);
+      }
+    } else if ($img.getAttribute('src') === xhr.response[i]['Image Gallery'][1].src) {
+      if (xhr.response[i]['Image Gallery'][1].src === null) {
+        $img.setAttribute('src', 'images/placeholder.png');
+      } else {
+        $img.setAttribute('src', xhr.response[i]['Image Gallery'][0].src);
+      }
+    }
+    // console.log("xhr.response[i]['Image Gallery'][0].src", xhr.response[i]['Image Gallery'][0].src);
+  }
+  // console.log('i:', i);
+});
+
+$rightArrow.addEventListener('click', function (event) {
+  for (var i = 0; i < xhr.response.length; i++) {
+    if ($img.getAttribute('src') === xhr.response[i]['Image Gallery'][0].src) {
+      if (xhr.response[i]['Image Gallery'][0].src === null) {
+        $img.setAttribute('src', 'images/placeholder.png');
+      } else {
+        $img.setAttribute('src', xhr.response[i]['Image Gallery'][1].src);
+      }
+    } else if ($img.getAttribute('src') === xhr.response[i]['Image Gallery'][1].src) {
+      if (xhr.response[i]['Image Gallery'][1].src === null) {
+        $img.setAttribute('src', 'images/placeholder.png');
+      } else {
+        $img.setAttribute('src', xhr.response[i]['Image Gallery'][2].src);
+      }
+    } else if ($img.getAttribute('src') === xhr.response[i]['Image Gallery'][2].src) {
+      if (xhr.response[i]['Image Gallery'][2].src === null) {
+        $img.setAttribute('src', 'images/placeholder.png');
+      } else {
+        $img.setAttribute('src', xhr.response[i]['Image Gallery'][3].src);
+      }
+    } else if ($img.getAttribute('src') === xhr.response[i]['Image Gallery'][3].src) {
+      if (xhr.response[i]['Image Gallery'][3].src === null) {
+        $img.setAttribute('src', 'images/placeholder.png');
+      } else {
+        $img.setAttribute('src', xhr.response[i]['Image Gallery'][4].src);
+      }
+    } else if ($img.getAttribute('src') === xhr.response[i]['Image Gallery'][4].src) {
+      if (xhr.response[i]['Image Gallery'][4].src === null) {
+        $img.setAttribute('src', 'images/placeholder.png');
+      } else {
+        $img.setAttribute('src', xhr.response[i]['Image Gallery'][0].src);
       }
     }
   }
