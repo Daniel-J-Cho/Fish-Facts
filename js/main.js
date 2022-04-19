@@ -79,7 +79,21 @@ $species.addEventListener('change', function (event) {
             $funFactText.textContent = 'Fun Fact: ' + ' ' + xhr.response[j - 1].Quote;
             $biologyText.textContent = 'Biology: ' + ' ' + xhr.response[j - 1].Biology;
             $habitatText.textContent = 'Habitat: ' + ' ' + xhr.response[j - 1].Habitat;
-            $caloriesText.textContent = 'Calories: ' + ' ' + xhr.response[j - 1].Calories;
+            $caloriesText.textContent = 'Calories: ' + ' ' + xhr.response[j - 1].Calories + ' cal';
+            $carbohydratesText.textContent = 'Carbohydrates: ' + ' ' + xhr.response[j - 1].Carbohydrate;
+            $cholesterolText.textContent = 'Cholesterol: ' + ' ' + xhr.response[j - 1].Cholesterol;
+            $fatContentText.textContent = 'Fat Content: ' + ' ' + xhr.response[j - 1]['Fat, Total'];
+            $healthBenefitsText.textContent = 'Health Benefits: ' + ' ' + xhr.response[j - 1]['Health Benefits'];
+            $tasteText.textContent = 'Taste: ' + ' ' + xhr.response[j - 1].Taste;
+          } else if (xhr.response[j - 1]['Image Gallery'][0] === undefined) {
+            $speciesH3.textContent = xhr.response[j - 1]['Species Name'];
+            $img.setAttribute('src', xhr.response[j - 1]['Image Gallery'].src);
+            $img.setAttribute('alt', xhr.response[j - 1]['Image Gallery'].alt);
+            $speciesText.textContent = 'Species Name: ' + ' ' + xhr.response[j - 1]['Species Name'];
+            $funFactText.textContent = 'Fun Fact: ' + ' ' + xhr.response[j - 1].Quote;
+            $biologyText.textContent = 'Biology: ' + ' ' + xhr.response[j - 1].Biology;
+            $habitatText.textContent = 'Habitat: ' + ' ' + xhr.response[j - 1].Habitat;
+            $caloriesText.textContent = 'Calories: ' + ' ' + xhr.response[j - 1].Calories + ' cal';
             $carbohydratesText.textContent = 'Carbohydrates: ' + ' ' + xhr.response[j - 1].Carbohydrate;
             $cholesterolText.textContent = 'Cholesterol: ' + ' ' + xhr.response[j - 1].Cholesterol;
             $fatContentText.textContent = 'Fat Content: ' + ' ' + xhr.response[j - 1]['Fat, Total'];
@@ -101,6 +115,103 @@ $species.addEventListener('change', function (event) {
             $tasteText.textContent = 'Taste: ' + ' ' + xhr.response[j - 1].Taste;
           }
         }
+      }
+    }
+  }
+});
+
+var $leftArrow = document.querySelector('.prev-img');
+var $rightArrow = document.querySelector('.next-img');
+
+$leftArrow.addEventListener('click', function (event) {
+  var currImgSrcL = $img.getAttribute('src');
+  for (var i = 0; i < xhr.response.length; i++) {
+    if (Array.isArray(xhr.response[i]['Image Gallery']) && xhr.response[i]['Image Gallery'].length === 5) {
+      if (currImgSrcL === xhr.response[i]['Image Gallery'][0].src) {
+        $img.setAttribute('src', xhr.response[i]['Image Gallery'][4].src);
+      } else if (currImgSrcL === xhr.response[i]['Image Gallery'][4].src) {
+        $img.setAttribute('src', xhr.response[i]['Image Gallery'][3].src);
+      } else if (currImgSrcL === xhr.response[i]['Image Gallery'][3].src) {
+        $img.setAttribute('src', xhr.response[i]['Image Gallery'][2].src);
+      } else if (currImgSrcL === xhr.response[i]['Image Gallery'][2].src) {
+        $img.setAttribute('src', xhr.response[i]['Image Gallery'][1].src);
+      } else if (currImgSrcL === xhr.response[i]['Image Gallery'][1].src) {
+        $img.setAttribute('src', xhr.response[i]['Image Gallery'][0].src);
+      }
+    } else if (Array.isArray(xhr.response[i]['Image Gallery']) && xhr.response[i]['Image Gallery'].length === 4) {
+      if (currImgSrcL === xhr.response[i]['Image Gallery'][0].src) {
+        $img.setAttribute('src', xhr.response[i]['Image Gallery'][3].src);
+      } else if (currImgSrcL === xhr.response[i]['Image Gallery'][3].src) {
+        $img.setAttribute('src', xhr.response[i]['Image Gallery'][2].src);
+      } else if (currImgSrcL === xhr.response[i]['Image Gallery'][2].src) {
+        $img.setAttribute('src', xhr.response[i]['Image Gallery'][1].src);
+      } else if (currImgSrcL === xhr.response[i]['Image Gallery'][1].src) {
+        $img.setAttribute('src', xhr.response[i]['Image Gallery'][0].src);
+      }
+    } else if (Array.isArray(xhr.response[i]['Image Gallery']) && xhr.response[i]['Image Gallery'].length === 3) {
+      if (currImgSrcL === xhr.response[i]['Image Gallery'][0].src) {
+        $img.setAttribute('src', xhr.response[i]['Image Gallery'][2].src);
+      } else if (currImgSrcL === xhr.response[i]['Image Gallery'][2].src) {
+        $img.setAttribute('src', xhr.response[i]['Image Gallery'][1].src);
+      } else if (currImgSrcL === xhr.response[i]['Image Gallery'][1].src) {
+        $img.setAttribute('src', xhr.response[i]['Image Gallery'][0].src);
+      }
+    } else if (Array.isArray(xhr.response[i]['Image Gallery']) && xhr.response[i]['Image Gallery'].length === 2) {
+      if (currImgSrcL === xhr.response[i]['Image Gallery'][0].src) {
+        $img.setAttribute('src', xhr.response[i]['Image Gallery'][1].src);
+      } else if (currImgSrcL === xhr.response[i]['Image Gallery'][1].src) {
+        $img.setAttribute('src', xhr.response[i]['Image Gallery'][0].src);
+      }
+    } else {
+      if (currImgSrcL === xhr.response[i]['Image Gallery']) {
+        break;
+      }
+    }
+  }
+});
+
+$rightArrow.addEventListener('click', function (event) {
+  var currImgSrcR = $img.getAttribute('src');
+  for (var i = 0; i < xhr.response.length; i++) {
+    if (Array.isArray(xhr.response[i]['Image Gallery']) && xhr.response[i]['Image Gallery'].length === 5) {
+      if (currImgSrcR === xhr.response[i]['Image Gallery'][0].src) {
+        $img.setAttribute('src', xhr.response[i]['Image Gallery'][1].src);
+      } else if (currImgSrcR === xhr.response[i]['Image Gallery'][1].src) {
+        $img.setAttribute('src', xhr.response[i]['Image Gallery'][2].src);
+      } else if (currImgSrcR === xhr.response[i]['Image Gallery'][2].src) {
+        $img.setAttribute('src', xhr.response[i]['Image Gallery'][3].src);
+      } else if (currImgSrcR === xhr.response[i]['Image Gallery'][3].src) {
+        $img.setAttribute('src', xhr.response[i]['Image Gallery'][4].src);
+      } else if (currImgSrcR === xhr.response[i]['Image Gallery'][4].src) {
+        $img.setAttribute('src', xhr.response[i]['Image Gallery'][0].src);
+      }
+    } else if (Array.isArray(xhr.response[i]['Image Gallery']) && xhr.response[i]['Image Gallery'].length === 4) {
+      if (currImgSrcR === xhr.response[i]['Image Gallery'][0].src) {
+        $img.setAttribute('src', xhr.response[i]['Image Gallery'][1].src);
+      } else if (currImgSrcR === xhr.response[i]['Image Gallery'][1].src) {
+        $img.setAttribute('src', xhr.response[i]['Image Gallery'][2].src);
+      } else if (currImgSrcR === xhr.response[i]['Image Gallery'][2].src) {
+        $img.setAttribute('src', xhr.response[i]['Image Gallery'][3].src);
+      } else if (currImgSrcR === xhr.response[i]['Image Gallery'][3].src) {
+        $img.setAttribute('src', xhr.response[i]['Image Gallery'][0].src);
+      }
+    } else if (Array.isArray(xhr.response[i]['Image Gallery']) && xhr.response[i]['Image Gallery'].length === 3) {
+      if (currImgSrcR === xhr.response[i]['Image Gallery'][0].src) {
+        $img.setAttribute('src', xhr.response[i]['Image Gallery'][1].src);
+      } else if (currImgSrcR === xhr.response[i]['Image Gallery'][1].src) {
+        $img.setAttribute('src', xhr.response[i]['Image Gallery'][2].src);
+      } else if (currImgSrcR === xhr.response[i]['Image Gallery'][2].src) {
+        $img.setAttribute('src', xhr.response[i]['Image Gallery'][0].src);
+      }
+    } else if (Array.isArray(xhr.response[i]['Image Gallery']) && xhr.response[i]['Image Gallery'].length === 2) {
+      if (currImgSrcR === xhr.response[i]['Image Gallery'][0].src) {
+        $img.setAttribute('src', xhr.response[i]['Image Gallery'][1].src);
+      } else if (currImgSrcR === xhr.response[i]['Image Gallery'][1].src) {
+        $img.setAttribute('src', xhr.response[i]['Image Gallery'][0].src);
+      }
+    } else {
+      if (currImgSrcR === xhr.response[i]['Image Gallery']) {
+        break;
       }
     }
   }
