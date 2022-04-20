@@ -6,6 +6,7 @@
   max-width: 575px;
   margin: 0 auto;
   padding: 0 1.5rem;
+  position: relative;
 }
 
 .column-full,
@@ -17,15 +18,22 @@
   align-items: center;
 }
 
-.arrow-row {
+.arrow-button-row {
   display: flex;
-  justify-content: space-between;
-  margin: 0 20px;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
 }
 
 .biology-text,
+.calories-text,
+.carbohydrates-text,
+.cholesterol-text,
+.fat-content-text,
+.health-benefits-text,
 .habitat-text,
 .fun-fact-text,
+.species-name-text,
 .taste-text {
   font-size: 0.9rem;
 }
@@ -55,8 +63,18 @@
   margin-top: 20px;
 }
 
+.species {
+  width: 120px;
+  overflow: auto;
+}
+
 .text-align-center {
   text-align: center;
+}
+
+.form {
+  position: absolute;
+  bottom: 25px;
 }
 
 /* text boxes */
@@ -71,21 +89,15 @@
 .carbohydrates-text,
 .cholesterol-text,
 .fat-content-text,
-.health-benefits-text,
 .taste-text {
   display: flex;
   align-items: center;
   padding: 0 20px;
 }
 
-.biology-text {
-  display: flex;
-  padding-top: 10px;
-  padding-left: 20px;
-  padding-right: 20px;
-}
-
-.habitat-text {
+.biology-text,
+.habitat-text,
+.health-benefits-text {
   display: flex;
   padding-top: 10px;
   padding-left: 20px;
@@ -112,8 +124,14 @@
   }
 
   .biology-text,
+  .calories-text,
+  .carbohydrates-text,
+  .cholesterol-text,
+  .fat-content-text,
+  .health-benefits-text,
   .habitat-text,
   .fun-fact-text,
+  .species-name-text,
   .taste-text {
     font-size: 1rem;
   }
