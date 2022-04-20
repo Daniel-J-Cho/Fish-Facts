@@ -23,6 +23,13 @@
   margin: 0 20px;
 }
 
+.biology-text,
+.habitat-text,
+.fun-fact-text,
+.taste-text {
+  font-size: 0.9rem;
+}
+
 .image-arrows-container {
   display: flex;
   justify-content: space-between;
@@ -59,8 +66,6 @@
 }
 
 .species-name-text,
-.biology-text,
-.habitat-text,
 .fun-fact-text,
 .calories-text,
 .carbohydrates-text,
@@ -68,10 +73,26 @@
 .fat-content-text,
 .health-benefits-text,
 .taste-text {
-  padding-left: 20px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
 }
 
-@media screen and (min-width: 768px) {
+.biology-text {
+  display: flex;
+  padding-top: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.habitat-text {
+  display: flex;
+  padding-top: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+@media only screen and (min-width: 768px) {
   .container {
     max-width: 1300px;
   }
@@ -88,5 +109,12 @@
   .species {
     width: 220px;
     overflow: auto;
+  }
+
+  .biology-text,
+  .habitat-text,
+  .fun-fact-text,
+  .taste-text {
+    font-size: 1rem;
   }
 }
