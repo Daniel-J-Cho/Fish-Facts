@@ -93,45 +93,30 @@ select {
   border: 0.5px solid black;
   border-radius: 5px;
   height: 3.5rem;
-  line-height: 3.5rem;
+  line-height: 1.5rem;
 }
 
-.biology-text {
-  width: 100%;
-  background-color: white;
-  border: 0.5px solid black;
-  border-radius: 5px;
-  height: 11rem;
-  line-height: 11rem;
-  overflow: auto;
-}
-
-.habitat-text {
-  width: 100%;
-  background-color: white;
-  border: 0.5px solid black;
-  border-radius: 5px;
-  height: 11rem;
-  line-height: 11rem;
-  overflow: auto;
-}
-
-.fun-fact-text {
-  width: 100%;
-  background-color: white;
-  border: 0.5px solid black;
-  border-radius: 5px;
-  height: 5rem;
-  line-height: 5rem;
-  overflow: auto;
-}
-
+.biology-text,
+.habitat-text,
+.fun-fact-text,
 .taste-text {
   width: 100%;
   background-color: white;
   border: 0.5px solid black;
   border-radius: 5px;
-  height: 5rem;
-  line-height: 5rem;
+  line-height: 1.5rem;
   overflow: auto;
+}
+
+.biology-text {
+  height: 14rem;
+}
+
+.habitat-text {
+  height: 11rem;
+}
+
+.fun-fact-text,
+.taste-text {
+  height: 5rem;
 }

@@ -64,22 +64,12 @@ var $fatContentText = document.querySelector('.fat-content-text');
 var $healthBenefitsText = document.querySelector('.health-benefits-text');
 var $tasteText = document.querySelector('.taste-text');
 
-// function parseOut(string) {
-//   let startSlice = 0;
-//   let newStr = '';
-//   for (var i = 0; i < string.length; i++) {
-//     startSlice = string.indexOf('>');
-//     newStr = string.slice(startSlice + 1);
-//   }
-//   return newStr;
-// }
-
-function tags(str) {
+function noTags(str) {
   if ((str === '') || (str === null)) {
     return false;
   } else {
     str = str.toString();
-    return str.replace(/(<([^>]+)>)/ig, '');
+    return str.replace(/(<([^>]+)>)/gi, '');
   }
 }
 
@@ -96,42 +86,78 @@ $species.addEventListener('change', function (event) {
             $img.setAttribute('src', 'images/placeholder.png');
             $speciesText.textContent = 'Species Name: ' + ' ' + xhr.response[j - 1]['Species Name'];
             $funFactText.textContent = 'Fun Fact: ' + ' ' + xhr.response[j - 1].Quote;
-            $biologyText.textContent = 'Biology: ' + ' ' + xhr.response[j - 1].Biology;
-            $habitatText.textContent = 'Habitat: ' + ' ' + xhr.response[j - 1].Habitat;
+            $biologyText.textContent = 'Biology: ' + ' ' + noTags(xhr.response[j - 1].Biology);
+            if (xhr.response[j - 1].Habitat === null) {
+              $habitatText.textContent = 'Habitat:' + ' ' + 'We currently have no information regarding this species\' habitat at this time';
+            } else {
+              $habitatText.textContent = 'Habitat: ' + ' ' + noTags(xhr.response[j - 1].Habitat);
+            }
             $caloriesText.textContent = 'Calories: ' + ' ' + xhr.response[j - 1].Calories + ' cal';
             $carbohydratesText.textContent = 'Carbohydrates: ' + ' ' + xhr.response[j - 1].Carbohydrate;
             $cholesterolText.textContent = 'Cholesterol: ' + ' ' + xhr.response[j - 1].Cholesterol;
             $fatContentText.textContent = 'Fat Content: ' + ' ' + xhr.response[j - 1]['Fat, Total'];
-            $healthBenefitsText.textContent = 'Health Benefits: ' + ' ' + xhr.response[j - 1]['Health Benefits'];
-            $tasteText.textContent = 'Taste: ' + ' ' + xhr.response[j - 1].Taste;
+            if (xhr.response[j - 1]['Health Benefits'] === null) {
+              $healthBenefitsText.textContent = 'Health Benefits:' + ' ' + 'We currently have no information regarding this species\' health benefits at this time';
+            } else {
+              $healthBenefitsText.textContent = 'Health Benefits: ' + ' ' + noTags(xhr.response[j - 1]['Health Benefits']);
+            }
+            if (xhr.response[j - 1].Taste === null) {
+              $tasteText.textContent = 'Taste:' + ' ' + 'We currently have no information regarding this species\' taste.';
+            } else {
+              $tasteText.textContent = 'Taste:' + ' ' + noTags(xhr.response[j - 1].Taste);
+            }
           } else if (xhr.response[j - 1]['Image Gallery'][0] === undefined) {
             $speciesH3.textContent = xhr.response[j - 1]['Species Name'];
             $img.setAttribute('src', xhr.response[j - 1]['Image Gallery'].src);
             $img.setAttribute('alt', xhr.response[j - 1]['Image Gallery'].alt);
             $speciesText.textContent = 'Species Name: ' + ' ' + xhr.response[j - 1]['Species Name'];
             $funFactText.textContent = 'Fun Fact: ' + ' ' + xhr.response[j - 1].Quote;
-            $biologyText.textContent = 'Biology: ' + ' ' + xhr.response[j - 1].Biology;
-            $habitatText.textContent = 'Habitat: ' + ' ' + xhr.response[j - 1].Habitat;
+            $biologyText.textContent = 'Biology: ' + ' ' + noTags(xhr.response[j - 1].Biology);
+            if (xhr.response[j - 1].Habitat === null) {
+              $habitatText.textContent = 'Habitat:' + ' ' + 'We currently have no information regarding this species\' habitat at this time';
+            } else {
+              $habitatText.textContent = 'Habitat: ' + ' ' + noTags(xhr.response[j - 1].Habitat);
+            }
             $caloriesText.textContent = 'Calories: ' + ' ' + xhr.response[j - 1].Calories + ' cal';
             $carbohydratesText.textContent = 'Carbohydrates: ' + ' ' + xhr.response[j - 1].Carbohydrate;
             $cholesterolText.textContent = 'Cholesterol: ' + ' ' + xhr.response[j - 1].Cholesterol;
             $fatContentText.textContent = 'Fat Content: ' + ' ' + xhr.response[j - 1]['Fat, Total'];
-            $healthBenefitsText.textContent = 'Health Benefits: ' + ' ' + xhr.response[j - 1]['Health Benefits'];
-            $tasteText.textContent = 'Taste: ' + ' ' + xhr.response[j - 1].Taste;
+            if (xhr.response[j - 1]['Health Benefits'] === null) {
+              $healthBenefitsText.textContent = 'Health Benefits:' + ' ' + 'We currently have no information regarding this species\' health benefits at this time';
+            } else {
+              $healthBenefitsText.textContent = 'Health Benefits: ' + ' ' + noTags(xhr.response[j - 1]['Health Benefits']);
+            }
+            if (xhr.response[j - 1].Taste === null) {
+              $tasteText.textContent = 'Taste:' + ' ' + 'We currently have no information regarding this species\' taste.';
+            } else {
+              $tasteText.textContent = 'Taste: ' + ' ' + noTags(xhr.response[j - 1].Taste);
+            }
           } else {
             $speciesH3.textContent = xhr.response[j - 1]['Species Name'];
             $img.setAttribute('src', xhr.response[j - 1]['Image Gallery'][0].src);
             $img.setAttribute('alt', xhr.response[j - 1]['Image Gallery'][0].alt);
             $speciesText.textContent = 'Species Name: ' + ' ' + xhr.response[j - 1]['Species Name'];
             $funFactText.textContent = 'Fun Fact: ' + ' ' + xhr.response[j - 1].Quote;
-            $biologyText.textContent = 'Biology: ' + ' ' + tags(xhr.response[j - 1].Biology);
-            $habitatText.textContent = 'Habitat: ' + ' ' + xhr.response[j - 1].Habitat;
+            $biologyText.textContent = 'Biology: ' + ' ' + noTags(xhr.response[j - 1].Biology);
+            if (xhr.response[j - 1].Habitat === null) {
+              $habitatText.textContent = 'Habitat:' + ' ' + 'We currently have no information regarding this species\' habitat at this time';
+            } else {
+              $habitatText.textContent = 'Habitat: ' + ' ' + noTags(xhr.response[j - 1].Habitat);
+            }
             $caloriesText.textContent = 'Calories: ' + ' ' + xhr.response[j - 1].Calories + ' cal';
             $carbohydratesText.textContent = 'Carbohydrates: ' + ' ' + xhr.response[j - 1].Carbohydrate;
             $cholesterolText.textContent = 'Cholesterol: ' + ' ' + xhr.response[j - 1].Cholesterol;
             $fatContentText.textContent = 'Fat Content: ' + ' ' + xhr.response[j - 1]['Fat, Total'];
-            $healthBenefitsText.textContent = 'Health Benefits: ' + ' ' + xhr.response[j - 1]['Health Benefits'];
-            $tasteText.textContent = 'Taste: ' + ' ' + xhr.response[j - 1].Taste;
+            if (xhr.response[j - 1]['Health Benefits'] === null) {
+              $healthBenefitsText.textContent = 'Health Benefits:' + ' ' + 'We currently have no information regarding this species\' health benefits at this time';
+            } else {
+              $healthBenefitsText.textContent = 'Health Benefits: ' + ' ' + noTags(xhr.response[j - 1]['Health Benefits']);
+            }
+            if (xhr.response[j - 1].Taste === null) {
+              $tasteText.textContent = 'Taste:' + ' ' + 'We currently have no information regarding this species\' taste.';
+            } else {
+              $tasteText.textContent = 'Taste: ' + ' ' + noTags(xhr.response[j - 1].Taste);
+            }
           }
         }
       }
