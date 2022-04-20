@@ -11,6 +11,11 @@ h1 {
   color: black;
 }
 
+.arrow-mobile {
+  font-size: 5rem;
+  color: black;
+}
+
 .arrow-link {
   text-decoration: none;
 }
@@ -28,6 +33,15 @@ h1 {
   margin-left: 100px;
 }
 
+.favorites-button {
+  width: 180px;
+  height: 35px;
+  background-color: #efa058;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
 main {
   width: 95%;
   height: 47rem;
@@ -42,11 +56,6 @@ main {
 select {
   height: 32px;
   border-radius: 5px;
-}
-
-.species {
-  width: 150px;
-  overflow: auto;
 }
 
 .species-h3 {
@@ -82,23 +91,16 @@ select {
 }
 
 /* text boxes */
-.species-name-text,
+
+.biology-text,
 .calories-text,
 .carbohydrates-text,
 .cholesterol-text,
 .fat-content-text,
-.health-benefits-text {
-  width: 100%;
-  background-color: white;
-  border: 0.5px solid black;
-  border-radius: 5px;
-  height: 3.5rem;
-  line-height: 1.5rem;
-}
-
-.biology-text,
-.habitat-text,
 .fun-fact-text,
+.habitat-text,
+.health-benefits-text,
+.species-name-text,
 .taste-text {
   width: 100%;
   background-color: white;
@@ -108,10 +110,7 @@ select {
   overflow: auto;
 }
 
-.biology-text {
-  height: 14rem;
-}
-
+.biology-text,
 .habitat-text {
   height: 11rem;
 }
@@ -119,4 +118,16 @@ select {
 .fun-fact-text,
 .taste-text {
   height: 5rem;
+}
+
+.species-name-text,
+.calories-text,
+.carbohydrates-text,
+.cholesterol-text,
+.fat-content-text {
+  height: 3.5rem;
+}
+
+.health-benefits-text {
+  height: 4rem;
 }

@@ -94,7 +94,11 @@ $species.addEventListener('change', function (event) {
             }
             $caloriesText.textContent = 'Calories: ' + ' ' + xhr.response[j - 1].Calories + ' cal';
             $carbohydratesText.textContent = 'Carbohydrates: ' + ' ' + xhr.response[j - 1].Carbohydrate;
-            $cholesterolText.textContent = 'Cholesterol: ' + ' ' + xhr.response[j - 1].Cholesterol;
+            if (xhr.response[j - 1].Cholesterol === null) {
+              $cholesterolText.textContent = 'Cholesterol:' + ' ' + 'We currently have no information regarding this species\' cholesterol.';
+            } else {
+              $cholesterolText.textContent = 'Cholesterol: ' + ' ' + noTags(xhr.response[j - 1].Cholesterol);
+            }
             $fatContentText.textContent = 'Fat Content: ' + ' ' + xhr.response[j - 1]['Fat, Total'];
             if (xhr.response[j - 1]['Health Benefits'] === null) {
               $healthBenefitsText.textContent = 'Health Benefits:' + ' ' + 'We currently have no information regarding this species\' health benefits at this time';
@@ -120,7 +124,11 @@ $species.addEventListener('change', function (event) {
             }
             $caloriesText.textContent = 'Calories: ' + ' ' + xhr.response[j - 1].Calories + ' cal';
             $carbohydratesText.textContent = 'Carbohydrates: ' + ' ' + xhr.response[j - 1].Carbohydrate;
-            $cholesterolText.textContent = 'Cholesterol: ' + ' ' + xhr.response[j - 1].Cholesterol;
+            if (xhr.response[j - 1].Cholesterol === null) {
+              $cholesterolText.textContent = 'Cholesterol:' + ' ' + 'We currently have no information regarding this species\' cholesterol.';
+            } else {
+              $cholesterolText.textContent = 'Cholesterol: ' + ' ' + noTags(xhr.response[j - 1].Cholesterol);
+            }
             $fatContentText.textContent = 'Fat Content: ' + ' ' + xhr.response[j - 1]['Fat, Total'];
             if (xhr.response[j - 1]['Health Benefits'] === null) {
               $healthBenefitsText.textContent = 'Health Benefits:' + ' ' + 'We currently have no information regarding this species\' health benefits at this time';
@@ -146,7 +154,11 @@ $species.addEventListener('change', function (event) {
             }
             $caloriesText.textContent = 'Calories: ' + ' ' + xhr.response[j - 1].Calories + ' cal';
             $carbohydratesText.textContent = 'Carbohydrates: ' + ' ' + xhr.response[j - 1].Carbohydrate;
-            $cholesterolText.textContent = 'Cholesterol: ' + ' ' + xhr.response[j - 1].Cholesterol;
+            if (xhr.response[j - 1].Cholesterol === null) {
+              $cholesterolText.textContent = 'Cholesterol:' + ' ' + 'We currently have no information regarding this species\' cholesterol.';
+            } else {
+              $cholesterolText.textContent = 'Cholesterol: ' + ' ' + noTags(xhr.response[j - 1].Cholesterol);
+            }
             $fatContentText.textContent = 'Fat Content: ' + ' ' + xhr.response[j - 1]['Fat, Total'];
             if (xhr.response[j - 1]['Health Benefits'] === null) {
               $healthBenefitsText.textContent = 'Health Benefits:' + ' ' + 'We currently have no information regarding this species\' health benefits at this time';
