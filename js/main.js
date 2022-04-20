@@ -64,6 +64,25 @@ var $fatContentText = document.querySelector('.fat-content-text');
 var $healthBenefitsText = document.querySelector('.health-benefits-text');
 var $tasteText = document.querySelector('.taste-text');
 
+// function parseOut(string) {
+//   let startSlice = 0;
+//   let newStr = '';
+//   for (var i = 0; i < string.length; i++) {
+//     startSlice = string.indexOf('>');
+//     newStr = string.slice(startSlice + 1);
+//   }
+//   return newStr;
+// }
+
+function tags(str) {
+  if ((str === '') || (str === null)) {
+    return false;
+  } else {
+    str = str.toString();
+    return str.replace(/(<([^>]+)>)/ig, '');
+  }
+}
+
 $species.addEventListener('change', function (event) {
   if (event.target.matches('.species')) {
     for (var i = 0; i < $optionList.length; i++) {
@@ -105,7 +124,7 @@ $species.addEventListener('change', function (event) {
             $img.setAttribute('alt', xhr.response[j - 1]['Image Gallery'][0].alt);
             $speciesText.textContent = 'Species Name: ' + ' ' + xhr.response[j - 1]['Species Name'];
             $funFactText.textContent = 'Fun Fact: ' + ' ' + xhr.response[j - 1].Quote;
-            $biologyText.textContent = 'Biology: ' + ' ' + xhr.response[j - 1].Biology;
+            $biologyText.textContent = 'Biology: ' + ' ' + tags(xhr.response[j - 1].Biology);
             $habitatText.textContent = 'Habitat: ' + ' ' + xhr.response[j - 1].Habitat;
             $caloriesText.textContent = 'Calories: ' + ' ' + xhr.response[j - 1].Calories + ' cal';
             $carbohydratesText.textContent = 'Carbohydrates: ' + ' ' + xhr.response[j - 1].Carbohydrate;
