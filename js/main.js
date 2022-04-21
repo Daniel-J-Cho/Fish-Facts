@@ -270,6 +270,7 @@ var $formThree = document.querySelector('.form-3');
 var dataFish;
 
 function submitButton(event) {
+  event.preventDefault();
   var newObj = {};
   newObj.img = $img.getAttribute('src');
   newObj.title = $speciesH3.textContent;
