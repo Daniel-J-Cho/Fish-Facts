@@ -45,7 +45,7 @@ h1 {
 }
 
 .favorites-h2 {
-  margin-left: 100px;
+  margin-left: 20px;
 }
 
 .favorites-button {
@@ -85,6 +85,7 @@ select {
   width: 85%;
   height: 35rem;
   object-fit: contain;
+  background-color: #f5f7f7;
 }
 
 .species-image-fav {

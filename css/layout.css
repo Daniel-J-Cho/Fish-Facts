@@ -14,6 +14,10 @@
   width: 100%;
 }
 
+.row.view-container {
+  background-color: #f5f7f7;
+}
+
 .align-center {
   align-items: center;
 }
@@ -51,7 +55,7 @@
   margin: 0 auto;
   width: 80%;
   height: 35rem;
-  background-color: white;
+  background-color: #f5f7f7;
 }
 
 .inner-div {
@@ -61,6 +65,10 @@
 
 .justify-center {
   justify-content: center;
+}
+
+.li-item {
+  margin-bottom: 40px;
 }
 
 .select-tab-container {

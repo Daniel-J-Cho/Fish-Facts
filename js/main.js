@@ -22,7 +22,6 @@ xhr.send();
 var $img = document.querySelector('.species-image');
 var $selTabContainer = document.querySelector('.select-tab-container');
 var $tabs = document.querySelectorAll('.tab');
-// var $tabAnchor = document.querySelectorAll('.tab-anchor');
 var $views = document.querySelectorAll('.view');
 
 $selTabContainer.addEventListener('click', function (event) {
@@ -34,13 +33,6 @@ $selTabContainer.addEventListener('click', function (event) {
         $tabs[i].className = 'tab';
       }
     }
-    // for (var k = 0; k < $tabAnchor.length; k++) {
-    //   if (event.target === $tabAnchor[i]) {
-    //     $tabAnchor[k].className = 'tab-anchor active';
-    //   } else {
-    //     $tabAnchor[k].className = 'tab-anchor';
-    //   }
-    // }
     var dataViewVal = event.target.getAttribute('data-view');
     for (var j = 0; j < $views.length; j++) {
       if (dataViewVal === $views[j].getAttribute('data-view')) {
@@ -78,9 +70,6 @@ $species.addEventListener('change', function (event) {
     for (var i = 0; i < $optionList.length; i++) {
       for (var j = 1; j < $optionList[i].length; j++) {
         if (event.target.value === $optionList[i][j].value) {
-          // console.log('$optionList[i][j].value:', $optionList[i][j].value);
-          // console.log('$optionList[i][j]:', $optionList[i][j]);
-          // console.log('j:', j);
           if (xhr.response[j - 1]['Image Gallery'] === null) {
             $speciesH3.textContent = xhr.response[j - 1]['Species Name'];
             $img.setAttribute('src', 'images/placeholder.png');
@@ -281,6 +270,9 @@ var dataFish;
 $form.addEventListener('submit', function (event) {
   event.preventDefault();
   var newObj = {};
+  newObj.img = $img.getAttribute('src');
+  newObj.title = $speciesH3.textContent;
+  newObj.text = $biologyText.textContent;
   newObj.entryId = dataFish.nextEntryId;
   dataFish.nextEntryId++;
   dataFish.entries.unshift(newObj);
@@ -296,17 +288,17 @@ function favSpecies(entry) {
   firstColDiv.setAttribute('class', 'column-half');
   var imgNode = document.createElement('img');
   imgNode.setAttribute('class', 'species-image-fav');
-  imgNode.setAttribute('src', $img.getAttribute('src'));
+  imgNode.setAttribute('src', entry.img);
   var secondColDiv = document.createElement('div');
   secondColDiv.setAttribute('class', 'column-half');
   var innerDiv = document.createElement('div');
   innerDiv.className = 'inner-div';
   var h2Node = document.createElement('h2');
-  h2Node.textContent = $speciesH3.textContent;
+  h2Node.textContent = entry.title;
   var innerInnerDiv = document.createElement('div');
   innerInnerDiv.className = 'inner-inner-div';
   var pNode = document.createElement('p');
-  pNode.textContent = $biologyText.textContent;
+  pNode.textContent = entry.text.slice(8);
   liNode.appendChild(mainDiv);
   liNode.className = 'li-item';
   liNode.setAttribute('data-entry-id', entry.entryId);
@@ -343,5 +335,12 @@ $ul.addEventListener('click', function (event) {
         $listNodes[i].remove();
       }
     }
+  }
+});
+
+document.addEventListener('DOMContentLoaded', function (event) {
+  for (let i = 0; i < dataFish.entries.length; i++) {
+    var entry = favSpecies(dataFish.entries[i]);
+    $ul.appendChild(entry);
   }
 });
