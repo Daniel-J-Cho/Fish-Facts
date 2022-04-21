@@ -38,11 +38,6 @@
   font-size: 0.9rem;
 }
 
-[data-view="favorites"] {
-  display: flex;
-  flex-wrap: wrap;
-}
-
 .image-arrows-container {
   display: flex;
   justify-content: space-between;

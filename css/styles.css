@@ -25,6 +25,10 @@ h1 {
   flex-wrap: wrap;
 }
 
+.no-wrap {
+  flex-wrap: nowrap;
+}
+
 .column-full.header {
   display: flex;
   background-color: #c4c4c4;

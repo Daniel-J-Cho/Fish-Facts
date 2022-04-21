@@ -276,14 +276,19 @@ $rightArrow.addEventListener('click', function (event) {
 
 var $ul = document.querySelector('.unordered-list');
 var $form = document.querySelector('.form');
+var dataFish;
 
 $form.addEventListener('submit', function (event) {
   event.preventDefault();
-  var listItem = favSpecies();
+  var newObj = {};
+  newObj.entryId = dataFish.nextEntryId;
+  dataFish.nextEntryId++;
+  dataFish.entries.unshift(newObj);
+  var listItem = favSpecies(newObj);
   $ul.prepend(listItem);
 });
 
-function favSpecies() {
+function favSpecies(entry) {
   var liNode = document.createElement('li');
   var mainDiv = document.createElement('div');
   mainDiv.setAttribute('class', 'row');
@@ -300,14 +305,15 @@ function favSpecies() {
   h2Node.textContent = $speciesH3.textContent;
   var innerInnerDiv = document.createElement('div');
   innerInnerDiv.className = 'inner-inner-div';
-  var delButton = document.createElement('button');
-  delButton.setAttribute('class', 'del-button');
-  delButton.textContent = 'DELETE FROM FAVORITES';
   var pNode = document.createElement('p');
   pNode.textContent = $biologyText.textContent;
   liNode.appendChild(mainDiv);
   liNode.className = 'li-item';
-  // must setAttribute of 'data-entry-id, entry.entryId' to liNode
+  liNode.setAttribute('data-entry-id', entry.entryId);
+  var delButton = document.createElement('button');
+  delButton.setAttribute('class', 'del-button');
+  delButton.textContent = 'DELETE FROM FAVORITES';
+  delButton.setAttribute('data-entry-id', entry.entryId);
   mainDiv.appendChild(firstColDiv);
   firstColDiv.appendChild(imgNode);
   mainDiv.appendChild(secondColDiv);
@@ -318,3 +324,24 @@ function favSpecies() {
   secondColDiv.appendChild(pNode);
   return liNode;
 }
+
+$ul.addEventListener('click', function (event) {
+  if (event.target.matches('.del-button')) {
+    var nextEntryIdStr = event.target.getAttribute('data-entry-id');
+    var nextEntryIdNum = parseInt(nextEntryIdStr, 10);
+    for (var j = 0; j < dataFish.entries.length; j++) {
+      if (nextEntryIdNum === dataFish.entries[j].entryId) {
+        dataFish.editing = dataFish.entries[j];
+      }
+    }
+    var currEntryId = dataFish.editing.entryId;
+    var currEntryNum = parseInt(currEntryId, 10);
+    var $listNodes = document.querySelectorAll('.li-item');
+    for (let i = 0; i < dataFish.entries.length; i++) {
+      if (currEntryNum === dataFish.entries[i].entryId) {
+        dataFish.entries.splice(i, 1);
+        $listNodes[i].remove();
+      }
+    }
+  }
+});
