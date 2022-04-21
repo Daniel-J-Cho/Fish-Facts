@@ -265,9 +265,37 @@ $rightArrow.addEventListener('click', function (event) {
 
 var $ul = document.querySelector('.unordered-list');
 var $form = document.querySelector('.form');
+var $formTwo = document.querySelector('.form-2');
+var $formThree = document.querySelector('.form-3');
 var dataFish;
 
 $form.addEventListener('submit', function (event) {
+  event.preventDefault();
+  var newObj = {};
+  newObj.img = $img.getAttribute('src');
+  newObj.title = $speciesH3.textContent;
+  newObj.text = $biologyText.textContent;
+  newObj.entryId = dataFish.nextEntryId;
+  dataFish.nextEntryId++;
+  dataFish.entries.unshift(newObj);
+  var listItem = favSpecies(newObj);
+  $ul.prepend(listItem);
+});
+
+$formTwo.addEventListener('submit', function (event) {
+  event.preventDefault();
+  var newObj = {};
+  newObj.img = $img.getAttribute('src');
+  newObj.title = $speciesH3.textContent;
+  newObj.text = $biologyText.textContent;
+  newObj.entryId = dataFish.nextEntryId;
+  dataFish.nextEntryId++;
+  dataFish.entries.unshift(newObj);
+  var listItem = favSpecies(newObj);
+  $ul.prepend(listItem);
+});
+
+$formThree.addEventListener('submit', function (event) {
   event.preventDefault();
   var newObj = {};
   newObj.img = $img.getAttribute('src');
