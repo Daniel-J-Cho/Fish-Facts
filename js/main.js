@@ -273,3 +273,48 @@ $rightArrow.addEventListener('click', function (event) {
     }
   }
 });
+
+var $ul = document.querySelector('.unordered-list');
+var $form = document.querySelector('.form');
+
+$form.addEventListener('submit', function (event) {
+  event.preventDefault();
+  var listItem = favSpecies();
+  $ul.prepend(listItem);
+});
+
+function favSpecies() {
+  var liNode = document.createElement('li');
+  var mainDiv = document.createElement('div');
+  mainDiv.setAttribute('class', 'row');
+  var firstColDiv = document.createElement('div');
+  firstColDiv.setAttribute('class', 'column-half');
+  var imgNode = document.createElement('img');
+  imgNode.setAttribute('class', 'species-image-fav');
+  imgNode.setAttribute('src', $img.getAttribute('src'));
+  var secondColDiv = document.createElement('div');
+  secondColDiv.setAttribute('class', 'column-half');
+  var innerDiv = document.createElement('div');
+  innerDiv.className = 'inner-div';
+  var h2Node = document.createElement('h2');
+  h2Node.textContent = $speciesH3.textContent;
+  var innerInnerDiv = document.createElement('div');
+  innerInnerDiv.className = 'inner-inner-div';
+  var delButton = document.createElement('button');
+  delButton.setAttribute('class', 'del-button');
+  delButton.textContent = 'DELETE FROM FAVORITES';
+  var pNode = document.createElement('p');
+  pNode.textContent = $biologyText.textContent;
+  liNode.appendChild(mainDiv);
+  liNode.className = 'li-item';
+  // must setAttribute of 'data-entry-id, entry.entryId' to liNode
+  mainDiv.appendChild(firstColDiv);
+  firstColDiv.appendChild(imgNode);
+  mainDiv.appendChild(secondColDiv);
+  secondColDiv.appendChild(innerDiv);
+  innerDiv.appendChild(h2Node);
+  innerDiv.appendChild(innerInnerDiv);
+  innerInnerDiv.appendChild(delButton);
+  secondColDiv.appendChild(pNode);
+  return liNode;
+}

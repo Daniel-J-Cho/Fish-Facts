@@ -38,6 +38,11 @@
   font-size: 0.9rem;
 }
 
+[data-view="favorites"] {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .image-arrows-container {
   display: flex;
   justify-content: space-between;
@@ -52,6 +57,11 @@
   width: 80%;
   height: 35rem;
   background-color: white;
+}
+
+.inner-div {
+  display: flex;
+  justify-content: space-between;
 }
 
 .justify-center {
