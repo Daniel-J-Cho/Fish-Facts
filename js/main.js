@@ -269,8 +269,7 @@ var $formTwo = document.querySelector('.form-2');
 var $formThree = document.querySelector('.form-3');
 var dataFish;
 
-$form.addEventListener('submit', function (event) {
-  event.preventDefault();
+function submitButton(event) {
   var newObj = {};
   newObj.img = $img.getAttribute('src');
   newObj.title = $speciesH3.textContent;
@@ -280,33 +279,13 @@ $form.addEventListener('submit', function (event) {
   dataFish.entries.unshift(newObj);
   var listItem = favSpecies(newObj);
   $ul.prepend(listItem);
-});
+}
 
-$formTwo.addEventListener('submit', function (event) {
-  event.preventDefault();
-  var newObj = {};
-  newObj.img = $img.getAttribute('src');
-  newObj.title = $speciesH3.textContent;
-  newObj.text = $biologyText.textContent;
-  newObj.entryId = dataFish.nextEntryId;
-  dataFish.nextEntryId++;
-  dataFish.entries.unshift(newObj);
-  var listItem = favSpecies(newObj);
-  $ul.prepend(listItem);
-});
+$form.addEventListener('submit', submitButton);
 
-$formThree.addEventListener('submit', function (event) {
-  event.preventDefault();
-  var newObj = {};
-  newObj.img = $img.getAttribute('src');
-  newObj.title = $speciesH3.textContent;
-  newObj.text = $biologyText.textContent;
-  newObj.entryId = dataFish.nextEntryId;
-  dataFish.nextEntryId++;
-  dataFish.entries.unshift(newObj);
-  var listItem = favSpecies(newObj);
-  $ul.prepend(listItem);
-});
+$formTwo.addEventListener('submit', submitButton);
+
+$formThree.addEventListener('submit', submitButton);
 
 function favSpecies(entry) {
   var liNode = document.createElement('li');
