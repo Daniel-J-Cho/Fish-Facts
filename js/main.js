@@ -1,7 +1,7 @@
 // requesting API for data and populating scrollbar with 'Species Name' data
 var targetUrl = encodeURIComponent('https://www.fishwatch.gov/api/species');
 var $species = document.getElementById('species');
-var $speciesH3 = document.querySelector('.species-h3');
+var $speciesH2 = document.querySelector('.species-h2');
 var xhr = new XMLHttpRequest();
 xhr.open('GET', 'https://lfz-cors.herokuapp.com/?url=' + targetUrl);
 xhr.responseType = 'json';
@@ -69,7 +69,7 @@ $species.addEventListener('change', function (event) {
       for (var j = 1; j < $optionList[i].length; j++) {
         if (event.target.value === $optionList[i][j].value) {
           if (xhr.response[j - 1]['Image Gallery'] === null) {
-            $speciesH3.textContent = xhr.response[j - 1]['Species Name'];
+            $speciesH2.textContent = xhr.response[j - 1]['Species Name'];
             $img.setAttribute('src', 'images/placeholder.png');
             $speciesText.textContent = 'Species Name: ' + ' ' + xhr.response[j - 1]['Species Name'];
             $funFactText.textContent = 'Fun Fact: ' + ' ' + xhr.response[j - 1].Quote;
@@ -98,7 +98,7 @@ $species.addEventListener('change', function (event) {
               $tasteText.textContent = 'Taste:' + ' ' + noTags(xhr.response[j - 1].Taste);
             }
           } else if (xhr.response[j - 1]['Image Gallery'][0] === undefined) {
-            $speciesH3.textContent = xhr.response[j - 1]['Species Name'];
+            $speciesH2.textContent = xhr.response[j - 1]['Species Name'];
             $img.setAttribute('src', xhr.response[j - 1]['Image Gallery'].src);
             $img.setAttribute('alt', xhr.response[j - 1]['Image Gallery'].alt);
             $speciesText.textContent = 'Species Name: ' + ' ' + xhr.response[j - 1]['Species Name'];
@@ -128,7 +128,7 @@ $species.addEventListener('change', function (event) {
               $tasteText.textContent = 'Taste: ' + ' ' + noTags(xhr.response[j - 1].Taste);
             }
           } else {
-            $speciesH3.textContent = xhr.response[j - 1]['Species Name'];
+            $speciesH2.textContent = xhr.response[j - 1]['Species Name'];
             $img.setAttribute('src', xhr.response[j - 1]['Image Gallery'][0].src);
             $img.setAttribute('alt', xhr.response[j - 1]['Image Gallery'][0].alt);
             $speciesText.textContent = 'Species Name: ' + ' ' + xhr.response[j - 1]['Species Name'];
@@ -271,7 +271,7 @@ function submitButton(event) {
   event.preventDefault();
   var newObj = {};
   newObj.img = $img.getAttribute('src');
-  newObj.title = $speciesH3.textContent;
+  newObj.title = $speciesH2.textContent;
   newObj.text = $biologyText.textContent;
   newObj.entryId = dataFish.nextEntryId;
   dataFish.nextEntryId++;
@@ -318,8 +318,11 @@ function favSpecies(entry) {
   secondColDiv.appendChild(innerDiv);
   innerDiv.appendChild(h2Node);
   innerDiv.appendChild(innerInnerDiv);
-  innerInnerDiv.appendChild(delButton);
   secondColDiv.appendChild(pNode);
+  var innInnInnDiv = document.createElement('div');
+  innInnInnDiv.setAttribute('class', 'column-full inner');
+  pNode.appendChild(innInnInnDiv);
+  innInnInnDiv.appendChild(delButton);
   return liNode;
 }
 
