@@ -1,13 +1,11 @@
 // requesting API for data and populating scrollbar with 'Species Name' data
 var targetUrl = encodeURIComponent('https://www.fishwatch.gov/api/species');
 var $species = document.getElementById('species');
-var $speciesH3 = document.querySelector('.species-h3');
+var $speciesH2 = document.querySelector('.species-h2');
 var xhr = new XMLHttpRequest();
 xhr.open('GET', 'https://lfz-cors.herokuapp.com/?url=' + targetUrl);
 xhr.responseType = 'json';
 xhr.addEventListener('load', function () {
-  // console.log(xhr.status);
-  // console.log(xhr.response);
   for (let i = 0; i < xhr.response.length; i++) {
     var $option = document.createElement('option');
     $option.textContent = xhr.response[i]['Species Name'];
@@ -22,7 +20,6 @@ xhr.send();
 var $img = document.querySelector('.species-image');
 var $selTabContainer = document.querySelector('.select-tab-container');
 var $tabs = document.querySelectorAll('.tab');
-// var $tabAnchor = document.querySelectorAll('.tab-anchor');
 var $views = document.querySelectorAll('.view');
 
 $selTabContainer.addEventListener('click', function (event) {
@@ -34,13 +31,6 @@ $selTabContainer.addEventListener('click', function (event) {
         $tabs[i].className = 'tab';
       }
     }
-    // for (var k = 0; k < $tabAnchor.length; k++) {
-    //   if (event.target === $tabAnchor[i]) {
-    //     $tabAnchor[k].className = 'tab-anchor active';
-    //   } else {
-    //     $tabAnchor[k].className = 'tab-anchor';
-    //   }
-    // }
     var dataViewVal = event.target.getAttribute('data-view');
     for (var j = 0; j < $views.length; j++) {
       if (dataViewVal === $views[j].getAttribute('data-view')) {
@@ -78,11 +68,8 @@ $species.addEventListener('change', function (event) {
     for (var i = 0; i < $optionList.length; i++) {
       for (var j = 1; j < $optionList[i].length; j++) {
         if (event.target.value === $optionList[i][j].value) {
-          // console.log('$optionList[i][j].value:', $optionList[i][j].value);
-          // console.log('$optionList[i][j]:', $optionList[i][j]);
-          // console.log('j:', j);
           if (xhr.response[j - 1]['Image Gallery'] === null) {
-            $speciesH3.textContent = xhr.response[j - 1]['Species Name'];
+            $speciesH2.textContent = xhr.response[j - 1]['Species Name'];
             $img.setAttribute('src', 'images/placeholder.png');
             $speciesText.textContent = 'Species Name: ' + ' ' + xhr.response[j - 1]['Species Name'];
             $funFactText.textContent = 'Fun Fact: ' + ' ' + xhr.response[j - 1].Quote;
@@ -111,7 +98,7 @@ $species.addEventListener('change', function (event) {
               $tasteText.textContent = 'Taste:' + ' ' + noTags(xhr.response[j - 1].Taste);
             }
           } else if (xhr.response[j - 1]['Image Gallery'][0] === undefined) {
-            $speciesH3.textContent = xhr.response[j - 1]['Species Name'];
+            $speciesH2.textContent = xhr.response[j - 1]['Species Name'];
             $img.setAttribute('src', xhr.response[j - 1]['Image Gallery'].src);
             $img.setAttribute('alt', xhr.response[j - 1]['Image Gallery'].alt);
             $speciesText.textContent = 'Species Name: ' + ' ' + xhr.response[j - 1]['Species Name'];
@@ -141,7 +128,7 @@ $species.addEventListener('change', function (event) {
               $tasteText.textContent = 'Taste: ' + ' ' + noTags(xhr.response[j - 1].Taste);
             }
           } else {
-            $speciesH3.textContent = xhr.response[j - 1]['Species Name'];
+            $speciesH2.textContent = xhr.response[j - 1]['Species Name'];
             $img.setAttribute('src', xhr.response[j - 1]['Image Gallery'][0].src);
             $img.setAttribute('alt', xhr.response[j - 1]['Image Gallery'][0].alt);
             $speciesText.textContent = 'Species Name: ' + ' ' + xhr.response[j - 1]['Species Name'];
@@ -271,5 +258,98 @@ $rightArrow.addEventListener('click', function (event) {
         break;
       }
     }
+  }
+});
+
+var $ul = document.querySelector('.unordered-list');
+var $form = document.querySelector('.form');
+var $formTwo = document.querySelector('.form-2');
+var $formThree = document.querySelector('.form-3');
+var dataFish;
+
+function submitButton(event) {
+  event.preventDefault();
+  var newObj = {};
+  newObj.img = $img.getAttribute('src');
+  newObj.title = $speciesH2.textContent;
+  newObj.text = $biologyText.textContent;
+  newObj.entryId = dataFish.nextEntryId;
+  dataFish.nextEntryId++;
+  dataFish.entries.unshift(newObj);
+  var listItem = favSpecies(newObj);
+  $ul.prepend(listItem);
+}
+
+$form.addEventListener('submit', submitButton);
+
+$formTwo.addEventListener('submit', submitButton);
+
+$formThree.addEventListener('submit', submitButton);
+
+function favSpecies(entry) {
+  var liNode = document.createElement('li');
+  var mainDiv = document.createElement('div');
+  mainDiv.setAttribute('class', 'row');
+  var firstColDiv = document.createElement('div');
+  firstColDiv.setAttribute('class', 'column-half');
+  var imgNode = document.createElement('img');
+  imgNode.setAttribute('class', 'species-image-fav');
+  imgNode.setAttribute('src', entry.img);
+  var secondColDiv = document.createElement('div');
+  secondColDiv.setAttribute('class', 'column-half');
+  var innerDiv = document.createElement('div');
+  innerDiv.className = 'inner-div';
+  var h2Node = document.createElement('h2');
+  h2Node.textContent = entry.title;
+  var innerInnerDiv = document.createElement('div');
+  innerInnerDiv.className = 'inner-inner-div';
+  var pNode = document.createElement('p');
+  pNode.textContent = entry.text.slice(8);
+  liNode.appendChild(mainDiv);
+  liNode.className = 'li-item';
+  liNode.setAttribute('data-entry-id', entry.entryId);
+  var delButton = document.createElement('button');
+  delButton.setAttribute('class', 'del-button');
+  delButton.textContent = 'DELETE FROM FAVORITES';
+  delButton.setAttribute('data-entry-id', entry.entryId);
+  mainDiv.appendChild(firstColDiv);
+  firstColDiv.appendChild(imgNode);
+  mainDiv.appendChild(secondColDiv);
+  secondColDiv.appendChild(innerDiv);
+  innerDiv.appendChild(h2Node);
+  innerDiv.appendChild(innerInnerDiv);
+  secondColDiv.appendChild(pNode);
+  var innInnInnDiv = document.createElement('div');
+  innInnInnDiv.setAttribute('class', 'column-full inner');
+  pNode.appendChild(innInnInnDiv);
+  innInnInnDiv.appendChild(delButton);
+  return liNode;
+}
+
+$ul.addEventListener('click', function (event) {
+  if (event.target.matches('.del-button')) {
+    var nextEntryIdStr = event.target.getAttribute('data-entry-id');
+    var nextEntryIdNum = parseInt(nextEntryIdStr, 10);
+    for (var j = 0; j < dataFish.entries.length; j++) {
+      if (nextEntryIdNum === dataFish.entries[j].entryId) {
+        dataFish.editing = dataFish.entries[j];
+      }
+    }
+    var currEntryId = dataFish.editing.entryId;
+    var currEntryNum = parseInt(currEntryId, 10);
+    var $listNodes = document.querySelectorAll('.li-item');
+    for (let i = 0; i < dataFish.entries.length; i++) {
+      if (currEntryNum === dataFish.entries[i].entryId) {
+        dataFish.entries.splice(i, 1);
+        $listNodes[i].remove();
+      }
+    }
+  }
+});
+
+document.addEventListener('DOMContentLoaded', function (event) {
+  for (let i = 0; i < dataFish.entries.length; i++) {
+    var entry = favSpecies(dataFish.entries[i]);
+    $ul.appendChild(entry);
   }
 });

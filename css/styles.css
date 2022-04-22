@@ -11,17 +11,17 @@ h1 {
   color: black;
 }
 
-.arrow-mobile {
-  font-size: 5rem;
-  color: black;
-}
-
 .arrow-link {
   text-decoration: none;
 }
 
 .row {
   display: flex;
+  flex-wrap: wrap;
+}
+
+.no-wrap {
+  flex-wrap: nowrap;
 }
 
 .column-full.header {
@@ -29,8 +29,18 @@ h1 {
   background-color: #c4c4c4;
 }
 
+.del-button {
+  width: 180px;
+  height: 30px;
+  background-color: darkred;
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
 .favorites-h2 {
-  margin-left: 100px;
+  margin-left: 40px;
 }
 
 .favorites-button {
@@ -40,6 +50,17 @@ h1 {
   border: none;
   color: white;
   cursor: pointer;
+}
+
+.favorites-button:active {
+  background-color: rgb(109, 100, 100);
+  box-shadow: 0 5px rgb(9, 3, 61);
+  transform: translateY(2px);
+  transform: translateX(2px);
+}
+
+li {
+  list-style: none;
 }
 
 main {
@@ -58,36 +79,23 @@ select {
   border-radius: 5px;
 }
 
-.species-h3 {
+.species-h2 {
   font-family: "Cormorant SC", serif;
+  font-size: 21px;
 }
 
 .species-image {
   width: 85%;
   height: 35rem;
   object-fit: contain;
+  background-color: #f5f7f7;
 }
 
-.tab {
-  width: 10rem;
-  font-size: 14px;
-  background-color: #c4c4c4;
-  text-align: center;
-  border-radius: 5px;
-  height: 32px;
-  line-height: 32px;
-  cursor: pointer;
-}
-
-.tab.active {
-  width: 10rem;
-  background-color: #52e0f3;
-  color: white;
-  text-align: center;
-  border-radius: 5px;
-  height: 32px;
-  line-height: 32px;
-  cursor: pointer;
+.species-image-fav {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: 50% 50%;
 }
 
 /* text boxes */
