@@ -57,6 +57,13 @@ h1 {
   cursor: pointer;
 }
 
+.favorites-button:active {
+  background-color: darkgrey;
+  box-shadow: 0 5px gray;
+  transform: translateY(2px);
+  transform: translateX(2px);
+}
+
 li {
   list-style: none;
 }
