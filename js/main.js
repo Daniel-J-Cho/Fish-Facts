@@ -70,7 +70,7 @@ $species.addEventListener('change', function (event) {
         if (event.target.value === $optionList[i][j].value) {
           if (xhr.response[j - 1]['Image Gallery'] === null) {
             $speciesH2.textContent = xhr.response[j - 1]['Species Name'];
-            $img.setAttribute('src', '/images/placeholder.png');
+            $img.setAttribute('src', 'images/placeholder.png');
             $speciesText.textContent = 'Species Name: ' + ' ' + xhr.response[j - 1]['Species Name'];
             $funFactText.textContent = 'Fun Fact: ' + ' ' + xhr.response[j - 1].Quote;
             $biologyText.textContent = 'Biology: ' + ' ' + noTags(xhr.response[j - 1].Biology);
