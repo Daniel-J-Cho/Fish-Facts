@@ -59,7 +59,7 @@ function noTags(str) {
     return false;
   } else {
     str = str.toString();
-    return str.replace(/(<([^>]+)>)/gi, '');
+    return str.replace(/(<([^>]+)>)|&nbsp;/gi, '');
   }
 }
 
