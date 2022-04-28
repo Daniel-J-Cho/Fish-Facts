@@ -166,8 +166,10 @@ $species.addEventListener('change', function (event) {
 
 var $leftArrow = document.querySelector('.prev-img');
 var $rightArrow = document.querySelector('.next-img');
+var $loadSpin = document.querySelector('.load-spinner.hidden');
 
 $leftArrow.addEventListener('click', function (event) {
+  $loadSpin.setAttribute('class', 'load-spinner');
   var currImgSrcL = $img.getAttribute('src');
   for (var i = 0; i < xhr.response.length; i++) {
     if (Array.isArray(xhr.response[i]['Image Gallery']) && xhr.response[i]['Image Gallery'].length === 5) {
@@ -215,6 +217,7 @@ $leftArrow.addEventListener('click', function (event) {
 });
 
 $rightArrow.addEventListener('click', function (event) {
+  $loadSpin.setAttribute('class', 'load-spinner');
   var currImgSrcR = $img.getAttribute('src');
   for (var i = 0; i < xhr.response.length; i++) {
     if (Array.isArray(xhr.response[i]['Image Gallery']) && xhr.response[i]['Image Gallery'].length === 5) {
@@ -259,6 +262,10 @@ $rightArrow.addEventListener('click', function (event) {
       }
     }
   }
+});
+
+$img.addEventListener('load', function (event) {
+  $loadSpin.setAttribute('class', 'load-spinner hidden');
 });
 
 var $ul = document.querySelector('.unordered-list');
