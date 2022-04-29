@@ -1,4 +1,5 @@
 // requesting API for data and populating scrollbar with 'Species Name' data
+var specImgGall = {};
 var targetUrl = encodeURIComponent('https://www.fishwatch.gov/api/species');
 var $species = document.getElementById('species');
 var $speciesH2 = document.querySelector('.species-h2');
@@ -6,6 +7,7 @@ var xhr = new XMLHttpRequest();
 xhr.open('GET', 'https://lfz-cors.herokuapp.com/?url=' + targetUrl);
 xhr.responseType = 'json';
 xhr.addEventListener('load', function () {
+  // console.log(xhr.response);
   for (let i = 0; i < xhr.response.length; i++) {
     var $option = document.createElement('option');
     $option.textContent = xhr.response[i]['Species Name'];
@@ -13,7 +15,10 @@ xhr.addEventListener('load', function () {
     $option.setAttribute('class', 'species');
     $option.setAttribute('id', 'species-name');
     $species.appendChild($option);
+    var property = xhr.response[i]['Species Name'];
+    specImgGall[property] = xhr.response[i]['Image Gallery'];
   }
+  // console.log('specImgGall: ', specImgGall);
 });
 xhr.send();
 
