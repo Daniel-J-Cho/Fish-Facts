@@ -7,7 +7,6 @@ var xhr = new XMLHttpRequest();
 xhr.open('GET', 'https://lfz-cors.herokuapp.com/?url=' + targetUrl);
 xhr.responseType = 'json';
 xhr.addEventListener('load', function () {
-  // console.log(xhr.response);
   for (let i = 0; i < xhr.response.length; i++) {
     var $option = document.createElement('option');
     $option.textContent = xhr.response[i]['Species Name'];
@@ -18,7 +17,6 @@ xhr.addEventListener('load', function () {
     var property = xhr.response[i]['Species Name'];
     specImgGall[property] = xhr.response[i]['Image Gallery'];
   }
-  // console.log('specImgGall: ', specImgGall);
 });
 xhr.send();
 
@@ -76,6 +74,7 @@ $species.addEventListener('change', function (event) {
           if (xhr.response[j - 1]['Image Gallery'] === null) {
             $speciesH2.textContent = xhr.response[j - 1]['Species Name'];
             $img.setAttribute('src', 'images/placeholder.png');
+            $img.setAttribute('value', xhr.response[j - 1]['Species Name']);
             $speciesText.textContent = 'Species Name: ' + ' ' + xhr.response[j - 1]['Species Name'];
             $funFactText.textContent = 'Fun Fact: ' + ' ' + xhr.response[j - 1].Quote;
             $biologyText.textContent = 'Biology: ' + ' ' + noTags(xhr.response[j - 1].Biology);
@@ -106,6 +105,7 @@ $species.addEventListener('change', function (event) {
             $speciesH2.textContent = xhr.response[j - 1]['Species Name'];
             $img.setAttribute('src', xhr.response[j - 1]['Image Gallery'].src);
             $img.setAttribute('alt', xhr.response[j - 1]['Image Gallery'].alt);
+            $img.setAttribute('value', xhr.response[j - 1]['Species Name']);
             $speciesText.textContent = 'Species Name: ' + ' ' + xhr.response[j - 1]['Species Name'];
             $funFactText.textContent = 'Fun Fact: ' + ' ' + xhr.response[j - 1].Quote;
             $biologyText.textContent = 'Biology: ' + ' ' + noTags(xhr.response[j - 1].Biology);
@@ -136,6 +136,7 @@ $species.addEventListener('change', function (event) {
             $speciesH2.textContent = xhr.response[j - 1]['Species Name'];
             $img.setAttribute('src', xhr.response[j - 1]['Image Gallery'][0].src);
             $img.setAttribute('alt', xhr.response[j - 1]['Image Gallery'][0].alt);
+            $img.setAttribute('value', xhr.response[j - 1]['Species Name']);
             $speciesText.textContent = 'Species Name: ' + ' ' + xhr.response[j - 1]['Species Name'];
             $funFactText.textContent = 'Fun Fact: ' + ' ' + xhr.response[j - 1].Quote;
             $biologyText.textContent = 'Biology: ' + ' ' + noTags(xhr.response[j - 1].Biology);
@@ -176,47 +177,48 @@ var $loadSpin = document.querySelector('.load-spinner.hidden');
 $leftArrow.addEventListener('click', function (event) {
   $loadSpin.setAttribute('class', 'load-spinner');
   var currImgSrcL = $img.getAttribute('src');
-  for (var i = 0; i < xhr.response.length; i++) {
-    if (Array.isArray(xhr.response[i]['Image Gallery']) && xhr.response[i]['Image Gallery'].length === 5) {
-      if (currImgSrcL === xhr.response[i]['Image Gallery'][0].src) {
-        $img.setAttribute('src', xhr.response[i]['Image Gallery'][4].src);
-      } else if (currImgSrcL === xhr.response[i]['Image Gallery'][4].src) {
-        $img.setAttribute('src', xhr.response[i]['Image Gallery'][3].src);
-      } else if (currImgSrcL === xhr.response[i]['Image Gallery'][3].src) {
-        $img.setAttribute('src', xhr.response[i]['Image Gallery'][2].src);
-      } else if (currImgSrcL === xhr.response[i]['Image Gallery'][2].src) {
-        $img.setAttribute('src', xhr.response[i]['Image Gallery'][1].src);
-      } else if (currImgSrcL === xhr.response[i]['Image Gallery'][1].src) {
-        $img.setAttribute('src', xhr.response[i]['Image Gallery'][0].src);
-      }
-    } else if (Array.isArray(xhr.response[i]['Image Gallery']) && xhr.response[i]['Image Gallery'].length === 4) {
-      if (currImgSrcL === xhr.response[i]['Image Gallery'][0].src) {
-        $img.setAttribute('src', xhr.response[i]['Image Gallery'][3].src);
-      } else if (currImgSrcL === xhr.response[i]['Image Gallery'][3].src) {
-        $img.setAttribute('src', xhr.response[i]['Image Gallery'][2].src);
-      } else if (currImgSrcL === xhr.response[i]['Image Gallery'][2].src) {
-        $img.setAttribute('src', xhr.response[i]['Image Gallery'][1].src);
-      } else if (currImgSrcL === xhr.response[i]['Image Gallery'][1].src) {
-        $img.setAttribute('src', xhr.response[i]['Image Gallery'][0].src);
-      }
-    } else if (Array.isArray(xhr.response[i]['Image Gallery']) && xhr.response[i]['Image Gallery'].length === 3) {
-      if (currImgSrcL === xhr.response[i]['Image Gallery'][0].src) {
-        $img.setAttribute('src', xhr.response[i]['Image Gallery'][2].src);
-      } else if (currImgSrcL === xhr.response[i]['Image Gallery'][2].src) {
-        $img.setAttribute('src', xhr.response[i]['Image Gallery'][1].src);
-      } else if (currImgSrcL === xhr.response[i]['Image Gallery'][1].src) {
-        $img.setAttribute('src', xhr.response[i]['Image Gallery'][0].src);
-      }
-    } else if (Array.isArray(xhr.response[i]['Image Gallery']) && xhr.response[i]['Image Gallery'].length === 2) {
-      if (currImgSrcL === xhr.response[i]['Image Gallery'][0].src) {
-        $img.setAttribute('src', xhr.response[i]['Image Gallery'][1].src);
-      } else if (currImgSrcL === xhr.response[i]['Image Gallery'][1].src) {
-        $img.setAttribute('src', xhr.response[i]['Image Gallery'][0].src);
-      }
-    } else {
-      if (currImgSrcL === xhr.response[i]['Image Gallery']) {
-        break;
-      }
+  var currImgValL = $img.getAttribute('value');
+  if (Array.isArray(specImgGall[currImgValL]) && specImgGall[currImgValL].length === 5) {
+    if (currImgSrcL === specImgGall[currImgValL][0].src) {
+      $img.setAttribute('src', specImgGall[currImgValL][4].src);
+    } else if (currImgSrcL === specImgGall[currImgValL][4].src) {
+      $img.setAttribute('src', specImgGall[currImgValL][3].src);
+    } else if (currImgSrcL === specImgGall[currImgValL][3].src) {
+      $img.setAttribute('src', specImgGall[currImgValL][2].src);
+    } else if (currImgSrcL === specImgGall[currImgValL][2].src) {
+      $img.setAttribute('src', specImgGall[currImgValL][1].src);
+    } else if (currImgSrcL === specImgGall[currImgValL][1].src) {
+      $img.setAttribute('src', specImgGall[currImgValL][0].src);
+    }
+  } else if (Array.isArray(specImgGall[currImgValL]) && specImgGall[currImgValL].length === 4) {
+    if (currImgSrcL === specImgGall[currImgValL][0].src) {
+      $img.setAttribute('src', specImgGall[currImgValL][3].src);
+    } else if (currImgSrcL === specImgGall[currImgValL][3].src) {
+      $img.setAttribute('src', specImgGall[currImgValL][2].src);
+    } else if (currImgSrcL === specImgGall[currImgValL][2].src) {
+      $img.setAttribute('src', specImgGall[currImgValL][1].src);
+    } else if (currImgSrcL === specImgGall[currImgValL][1].src) {
+      $img.setAttribute('src', specImgGall[currImgValL][0].src);
+    }
+  } else if (Array.isArray(specImgGall[currImgValL]) && specImgGall[currImgValL].length === 3) {
+    if (currImgSrcL === specImgGall[currImgValL][0].src) {
+      $img.setAttribute('src', specImgGall[currImgValL][2].src);
+    } else if (currImgSrcL === specImgGall[currImgValL][2].src) {
+      $img.setAttribute('src', specImgGall[currImgValL][1].src);
+    } else if (currImgSrcL === specImgGall[currImgValL][1].src) {
+      $img.setAttribute('src', specImgGall[currImgValL][0].src);
+    }
+  } else if (Array.isArray(specImgGall[currImgValL]) && specImgGall[currImgValL].length === 2) {
+    if (currImgSrcL === specImgGall[currImgValL][0].src) {
+      $img.setAttribute('src', specImgGall[currImgValL][1].src);
+    } else if (currImgSrcL === specImgGall[currImgValL][1].src) {
+      $img.setAttribute('src', specImgGall[currImgValL][0].src);
+    }
+  } else if (currImgSrcL === 'images/placeholder.png') {
+    $loadSpin.setAttribute('class', 'load-spinner hidden');
+  } else {
+    if (currImgSrcL === specImgGall[currImgValL].src) {
+      $loadSpin.setAttribute('class', 'load-spinner hidden');
     }
   }
 });
@@ -224,47 +226,48 @@ $leftArrow.addEventListener('click', function (event) {
 $rightArrow.addEventListener('click', function (event) {
   $loadSpin.setAttribute('class', 'load-spinner');
   var currImgSrcR = $img.getAttribute('src');
-  for (var i = 0; i < xhr.response.length; i++) {
-    if (Array.isArray(xhr.response[i]['Image Gallery']) && xhr.response[i]['Image Gallery'].length === 5) {
-      if (currImgSrcR === xhr.response[i]['Image Gallery'][0].src) {
-        $img.setAttribute('src', xhr.response[i]['Image Gallery'][1].src);
-      } else if (currImgSrcR === xhr.response[i]['Image Gallery'][1].src) {
-        $img.setAttribute('src', xhr.response[i]['Image Gallery'][2].src);
-      } else if (currImgSrcR === xhr.response[i]['Image Gallery'][2].src) {
-        $img.setAttribute('src', xhr.response[i]['Image Gallery'][3].src);
-      } else if (currImgSrcR === xhr.response[i]['Image Gallery'][3].src) {
-        $img.setAttribute('src', xhr.response[i]['Image Gallery'][4].src);
-      } else if (currImgSrcR === xhr.response[i]['Image Gallery'][4].src) {
-        $img.setAttribute('src', xhr.response[i]['Image Gallery'][0].src);
-      }
-    } else if (Array.isArray(xhr.response[i]['Image Gallery']) && xhr.response[i]['Image Gallery'].length === 4) {
-      if (currImgSrcR === xhr.response[i]['Image Gallery'][0].src) {
-        $img.setAttribute('src', xhr.response[i]['Image Gallery'][1].src);
-      } else if (currImgSrcR === xhr.response[i]['Image Gallery'][1].src) {
-        $img.setAttribute('src', xhr.response[i]['Image Gallery'][2].src);
-      } else if (currImgSrcR === xhr.response[i]['Image Gallery'][2].src) {
-        $img.setAttribute('src', xhr.response[i]['Image Gallery'][3].src);
-      } else if (currImgSrcR === xhr.response[i]['Image Gallery'][3].src) {
-        $img.setAttribute('src', xhr.response[i]['Image Gallery'][0].src);
-      }
-    } else if (Array.isArray(xhr.response[i]['Image Gallery']) && xhr.response[i]['Image Gallery'].length === 3) {
-      if (currImgSrcR === xhr.response[i]['Image Gallery'][0].src) {
-        $img.setAttribute('src', xhr.response[i]['Image Gallery'][1].src);
-      } else if (currImgSrcR === xhr.response[i]['Image Gallery'][1].src) {
-        $img.setAttribute('src', xhr.response[i]['Image Gallery'][2].src);
-      } else if (currImgSrcR === xhr.response[i]['Image Gallery'][2].src) {
-        $img.setAttribute('src', xhr.response[i]['Image Gallery'][0].src);
-      }
-    } else if (Array.isArray(xhr.response[i]['Image Gallery']) && xhr.response[i]['Image Gallery'].length === 2) {
-      if (currImgSrcR === xhr.response[i]['Image Gallery'][0].src) {
-        $img.setAttribute('src', xhr.response[i]['Image Gallery'][1].src);
-      } else if (currImgSrcR === xhr.response[i]['Image Gallery'][1].src) {
-        $img.setAttribute('src', xhr.response[i]['Image Gallery'][0].src);
-      }
-    } else {
-      if (currImgSrcR === xhr.response[i]['Image Gallery']) {
-        break;
-      }
+  var currImgValR = $img.getAttribute('value');
+  if (Array.isArray(specImgGall[currImgValR]) && specImgGall[currImgValR].length === 5) {
+    if (currImgSrcR === specImgGall[currImgValR][0].src) {
+      $img.setAttribute('src', specImgGall[currImgValR][4].src);
+    } else if (currImgSrcR === specImgGall[currImgValR][4].src) {
+      $img.setAttribute('src', specImgGall[currImgValR][3].src);
+    } else if (currImgSrcR === specImgGall[currImgValR][3].src) {
+      $img.setAttribute('src', specImgGall[currImgValR][2].src);
+    } else if (currImgSrcR === specImgGall[currImgValR][2].src) {
+      $img.setAttribute('src', specImgGall[currImgValR][1].src);
+    } else if (currImgSrcR === specImgGall[currImgValR][1].src) {
+      $img.setAttribute('src', specImgGall[currImgValR][0].src);
+    }
+  } else if (Array.isArray(specImgGall[currImgValR]) && specImgGall[currImgValR].length === 4) {
+    if (currImgSrcR === specImgGall[currImgValR][0].src) {
+      $img.setAttribute('src', specImgGall[currImgValR][3].src);
+    } else if (currImgSrcR === specImgGall[currImgValR][3].src) {
+      $img.setAttribute('src', specImgGall[currImgValR][2].src);
+    } else if (currImgSrcR === specImgGall[currImgValR][2].src) {
+      $img.setAttribute('src', specImgGall[currImgValR][1].src);
+    } else if (currImgSrcR === specImgGall[currImgValR][1].src) {
+      $img.setAttribute('src', specImgGall[currImgValR][0].src);
+    }
+  } else if (Array.isArray(specImgGall[currImgValR]) && specImgGall[currImgValR].length === 3) {
+    if (currImgSrcR === specImgGall[currImgValR][0].src) {
+      $img.setAttribute('src', specImgGall[currImgValR][2].src);
+    } else if (currImgSrcR === specImgGall[currImgValR][2].src) {
+      $img.setAttribute('src', specImgGall[currImgValR][1].src);
+    } else if (currImgSrcR === specImgGall[currImgValR][1].src) {
+      $img.setAttribute('src', specImgGall[currImgValR][0].src);
+    }
+  } else if (Array.isArray(specImgGall[currImgValR]) && specImgGall[currImgValR].length === 2) {
+    if (currImgSrcR === specImgGall[currImgValR][0].src) {
+      $img.setAttribute('src', specImgGall[currImgValR][1].src);
+    } else if (currImgSrcR === specImgGall[currImgValR][1].src) {
+      $img.setAttribute('src', specImgGall[currImgValR][0].src);
+    }
+  } else if (currImgSrcR === 'images/placeholder.png') {
+    $loadSpin.setAttribute('class', 'load-spinner hidden');
+  } else {
+    if (currImgSrcR === specImgGall[currImgValR].src) {
+      $loadSpin.setAttribute('class', 'load-spinner hidden');
     }
   }
 });
