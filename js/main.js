@@ -229,32 +229,32 @@ $rightArrow.addEventListener('click', function (event) {
   var currImgValR = $img.getAttribute('value');
   if (Array.isArray(specImgGall[currImgValR]) && specImgGall[currImgValR].length === 5) {
     if (currImgSrcR === specImgGall[currImgValR][0].src) {
-      $img.setAttribute('src', specImgGall[currImgValR][4].src);
-    } else if (currImgSrcR === specImgGall[currImgValR][4].src) {
-      $img.setAttribute('src', specImgGall[currImgValR][3].src);
-    } else if (currImgSrcR === specImgGall[currImgValR][3].src) {
-      $img.setAttribute('src', specImgGall[currImgValR][2].src);
-    } else if (currImgSrcR === specImgGall[currImgValR][2].src) {
       $img.setAttribute('src', specImgGall[currImgValR][1].src);
     } else if (currImgSrcR === specImgGall[currImgValR][1].src) {
+      $img.setAttribute('src', specImgGall[currImgValR][2].src);
+    } else if (currImgSrcR === specImgGall[currImgValR][2].src) {
+      $img.setAttribute('src', specImgGall[currImgValR][3].src);
+    } else if (currImgSrcR === specImgGall[currImgValR][3].src) {
+      $img.setAttribute('src', specImgGall[currImgValR][4].src);
+    } else if (currImgSrcR === specImgGall[currImgValR][4].src) {
       $img.setAttribute('src', specImgGall[currImgValR][0].src);
     }
   } else if (Array.isArray(specImgGall[currImgValR]) && specImgGall[currImgValR].length === 4) {
     if (currImgSrcR === specImgGall[currImgValR][0].src) {
-      $img.setAttribute('src', specImgGall[currImgValR][3].src);
-    } else if (currImgSrcR === specImgGall[currImgValR][3].src) {
-      $img.setAttribute('src', specImgGall[currImgValR][2].src);
-    } else if (currImgSrcR === specImgGall[currImgValR][2].src) {
       $img.setAttribute('src', specImgGall[currImgValR][1].src);
     } else if (currImgSrcR === specImgGall[currImgValR][1].src) {
+      $img.setAttribute('src', specImgGall[currImgValR][2].src);
+    } else if (currImgSrcR === specImgGall[currImgValR][2].src) {
+      $img.setAttribute('src', specImgGall[currImgValR][3].src);
+    } else if (currImgSrcR === specImgGall[currImgValR][3].src) {
       $img.setAttribute('src', specImgGall[currImgValR][0].src);
     }
   } else if (Array.isArray(specImgGall[currImgValR]) && specImgGall[currImgValR].length === 3) {
     if (currImgSrcR === specImgGall[currImgValR][0].src) {
-      $img.setAttribute('src', specImgGall[currImgValR][2].src);
-    } else if (currImgSrcR === specImgGall[currImgValR][2].src) {
       $img.setAttribute('src', specImgGall[currImgValR][1].src);
     } else if (currImgSrcR === specImgGall[currImgValR][1].src) {
+      $img.setAttribute('src', specImgGall[currImgValR][2].src);
+    } else if (currImgSrcR === specImgGall[currImgValR][2].src) {
       $img.setAttribute('src', specImgGall[currImgValR][0].src);
     }
   } else if (Array.isArray(specImgGall[currImgValR]) && specImgGall[currImgValR].length === 2) {
