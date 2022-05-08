@@ -20,7 +20,7 @@
 }
 
 .row.view-container {
-  background-color: #f5f7f7;
+  background-color: rgb(188, 206, 251);
 }
 
 .align-center {
@@ -113,7 +113,7 @@
 
 .tab.active {
   width: 10rem;
-  background-color: #52e0f3;
+  background-color: #226ff4;
   color: white;
   text-align: center;
   border-radius: 5px;
