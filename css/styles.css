@@ -2,6 +2,10 @@
   font-family: "open sans", sans-serif;
 }
 
+body {
+  background-color: #df4548;
+}
+
 h1 {
   font-family: "Proza Libre", sans-serif;
 }
@@ -26,8 +30,9 @@ h1 {
 
 .column-full.header {
   display: flex;
-  background-color: #226ff4;
+  background-color: #0d7e39;
   color: white;
+  max-width: auto;
 }
 
 .del-button {
@@ -82,11 +87,11 @@ li {
 main {
   width: 95%;
   height: 47rem;
-  background-color: rgb(188, 206, 251);
+  background-color: #f5f7f7;
   margin: 3rem auto;
 }
 
-.select-tab-container {
+.select-button-container {
   height: 4rem;
 }
 

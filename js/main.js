@@ -21,17 +21,17 @@ xhr.addEventListener('load', function () {
 xhr.send();
 
 var $img = document.querySelector('.species-image');
-var $selTabContainer = document.querySelector('.select-tab-container');
-var $tabs = document.querySelectorAll('.tab');
+var $selButtonContainer = document.querySelector('.select-button-container');
+var $buttons = document.querySelectorAll('.button');
 var $views = document.querySelectorAll('.view');
 
-$selTabContainer.addEventListener('click', function (event) {
-  if (event.target.matches('.tab')) {
-    for (var i = 0; i < $tabs.length; i++) {
-      if (event.target === $tabs[i]) {
-        $tabs[i].className = 'tab active';
+$selButtonContainer.addEventListener('click', function (event) {
+  if (event.target.matches('.button')) {
+    for (var i = 0; i < $buttons.length; i++) {
+      if (event.target === $buttons[i]) {
+        $buttons[i].className = 'button active';
       } else {
-        $tabs[i].className = 'tab';
+        $buttons[i].className = 'button';
       }
     }
     var dataViewVal = event.target.getAttribute('data-view');
@@ -73,7 +73,7 @@ $species.addEventListener('change', function (event) {
         if (event.target.value === $optionList[i][j].value) {
           if (xhr.response[j - 1]['Image Gallery'] === null) {
             $speciesH2.textContent = xhr.response[j - 1]['Species Name'];
-            $img.setAttribute('src', 'images/placeholder.png');
+            $img.setAttribute('src', 'images/no-image-icon-15.png');
             $img.setAttribute('value', xhr.response[j - 1]['Species Name']);
             $speciesText.textContent = 'Species Name: ' + ' ' + xhr.response[j - 1]['Species Name'];
             $funFactText.textContent = 'Fun Fact: ' + ' ' + xhr.response[j - 1].Quote;
@@ -306,7 +306,7 @@ function favSpecies(entry) {
   var mainDiv = document.createElement('div');
   mainDiv.setAttribute('class', 'row');
   var firstColDiv = document.createElement('div');
-  firstColDiv.setAttribute('class', 'column-half');
+  firstColDiv.setAttribute('class', 'column-half first');
   var imgNode = document.createElement('img');
   imgNode.setAttribute('class', 'species-image-fav');
   imgNode.setAttribute('src', entry.img);
@@ -319,6 +319,7 @@ function favSpecies(entry) {
   var innerInnerDiv = document.createElement('div');
   innerInnerDiv.className = 'inner-inner-div';
   var pNode = document.createElement('p');
+  pNode.className = 'fav-p-element';
   pNode.textContent = entry.text.slice(8);
   liNode.appendChild(mainDiv);
   liNode.className = 'li-item';

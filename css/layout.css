@@ -5,7 +5,6 @@
 .container {
   max-width: 575px;
   margin: 0 auto;
-  padding: 0 1.5rem;
   position: relative;
 }
 
@@ -20,14 +19,36 @@
 }
 
 .row.view-container {
-  background-color: rgb(188, 206, 251);
+  background-color: #f5f7f7;
 }
 
 .align-center {
   align-items: center;
 }
 
-.arrow-button-row {
+.button {
+  width: 10rem;
+  font-size: 14px;
+  background-color: #c4c4c4;
+  text-align: center;
+  border-radius: 5px;
+  height: 32px;
+  line-height: 32px;
+  cursor: pointer;
+}
+
+.button.active {
+  width: 10rem;
+  background-color: #52e0f3;
+  color: white;
+  text-align: center;
+  border-radius: 5px;
+  height: 32px;
+  line-height: 32px;
+  cursor: pointer;
+}
+
+.fav-button-row {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -81,7 +102,7 @@
   position: absolute;
 }
 
-.select-tab-container {
+.select-button-container {
   display: flex;
   margin-top: 20px;
 }
@@ -98,28 +119,6 @@
 .form {
   position: absolute;
   bottom: 25px;
-}
-
-.tab {
-  width: 10rem;
-  font-size: 14px;
-  background-color: #c4c4c4;
-  text-align: center;
-  border-radius: 5px;
-  height: 32px;
-  line-height: 32px;
-  cursor: pointer;
-}
-
-.tab.active {
-  width: 10rem;
-  background-color: #226ff4;
-  color: white;
-  text-align: center;
-  border-radius: 5px;
-  height: 32px;
-  line-height: 32px;
-  cursor: pointer;
 }
 
 /* text boxes */
@@ -151,7 +150,7 @@
 
 @media only screen and (min-width: 768px) {
   .container {
-    max-width: 1300px;
+    max-width: 100%;
   }
 
   .column-full,
@@ -195,11 +194,25 @@
     right: 50px;
   }
 
-  .tab {
+  .button {
+    width: 5rem;
     font-size: 12px;
   }
 
-  .tab.active {
+  .button.active {
+    width: 5rem;
     font-size: 12px;
+  }
+
+  .column-half.first {
+    margin-right: 30px;
+  }
+
+  .del-button {
+    margin-right: 10px;
+  }
+
+  .fav-p-element {
+    margin-right: 20px;
   }
 }
