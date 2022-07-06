@@ -7,6 +7,7 @@ var xhr = new XMLHttpRequest();
 xhr.open('GET', 'https://lfz-cors.herokuapp.com/?url=' + targetUrl);
 xhr.responseType = 'json';
 xhr.addEventListener('load', function () {
+  $speciesH2.textContent = 'Select a species!';
   for (let i = 0; i < xhr.response.length; i++) {
     var $option = document.createElement('option');
     $option.textContent = xhr.response[i]['Species Name'];
@@ -16,6 +17,11 @@ xhr.addEventListener('load', function () {
     $species.appendChild($option);
     var property = xhr.response[i]['Species Name'];
     specImgGall[property] = xhr.response[i]['Image Gallery'];
+  }
+});
+window.addEventListener('error', function () {
+  if (xhr.response === null || xhr.responseURL !== 'https://lfz-cors.herokuapp.com/?url=https%3A%2F%2Fwww.fishwatch.gov%2Fapi%2Fspecies') {
+    $speciesH2.textContent = 'Sorry, there was an error connecting to the network! Please check your internet connection and try again!';
   }
 });
 xhr.send();
@@ -214,7 +220,7 @@ $leftArrow.addEventListener('click', function (event) {
     } else if (currImgSrcL === specImgGall[currImgValL][1].src) {
       $img.setAttribute('src', specImgGall[currImgValL][0].src);
     }
-  } else if (currImgSrcL === 'images/placeholder.png') {
+  } else if (currImgSrcL === 'images/no-image-icon-15.png') {
     $loadSpin.setAttribute('class', 'load-spinner hidden');
   } else {
     if (currImgSrcL === specImgGall[currImgValL].src) {
@@ -263,7 +269,7 @@ $rightArrow.addEventListener('click', function (event) {
     } else if (currImgSrcR === specImgGall[currImgValR][1].src) {
       $img.setAttribute('src', specImgGall[currImgValR][0].src);
     }
-  } else if (currImgSrcR === 'images/placeholder.png') {
+  } else if (currImgSrcR === 'images/no-image-icon-15.png') {
     $loadSpin.setAttribute('class', 'load-spinner hidden');
   } else {
     if (currImgSrcR === specImgGall[currImgValR].src) {
@@ -272,7 +278,7 @@ $rightArrow.addEventListener('click', function (event) {
   }
 });
 
-$img.addEventListener('load', function (event) {
+$img.addEventListener('load', function () {
   $loadSpin.setAttribute('class', 'load-spinner hidden');
 });
 
