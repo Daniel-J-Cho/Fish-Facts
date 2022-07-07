@@ -217,4 +217,10 @@
   .fav-p-element {
     margin-right: 20px;
   }
+
+  .image-container {
+    width: auto;
+    height: auto;
+    object-fit: contain;
+  }
 }
