@@ -7,9 +7,7 @@ var xhr = new XMLHttpRequest();
 xhr.open('GET', 'https://lfz-cors.herokuapp.com/?url=' + targetUrl);
 xhr.responseType = 'json';
 xhr.addEventListener('load', function () {
-  if ($speciesH2.textContent === 'Loading...') {
-    $speciesH2.textContent = 'Select a species!';
-  }
+  $speciesH2.textContent = 'Select a species!';
   for (let i = 0; i < xhr.response.length; i++) {
     var $option = document.createElement('option');
     $option.textContent = xhr.response[i]['Species Name'];
