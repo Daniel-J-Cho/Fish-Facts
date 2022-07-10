@@ -16,6 +16,7 @@
 .column-full.inner {
   display: flex;
   justify-content: flex-end;
+  margin-top: 3rem;
 }
 
 .row.view-container {
@@ -31,6 +32,7 @@
   font-size: 14px;
   background-color: #c4c4c4;
   text-align: center;
+  border: none;
   border-radius: 5px;
   height: 32px;
   line-height: 32px;
@@ -88,7 +90,7 @@
 
 .inner-div {
   display: flex;
-  justify-content: space-between;
+  margin-bottom: 2rem;
 }
 
 .justify-center {
@@ -96,7 +98,7 @@
 }
 
 .li-item {
-  margin-bottom: 50px;
+  margin-bottom: 3.2rem;
 }
 
 .load-spinner {
@@ -120,10 +122,9 @@
 
 .form {
   position: absolute;
-  bottom: 25px;
+  bottom: 1.2rem;
 }
 
-/* text boxes */
 .species-name-text,
 .calories-text {
   margin-top: 50px;
@@ -206,21 +207,29 @@
     font-size: 12px;
   }
 
+  .column-full.inner {
+    margin-top: 1rem;
+  }
+
   .column-half.first {
-    margin-right: 30px;
+    margin-right: 35px;
   }
 
   .del-button {
-    margin-right: 10px;
+    margin-right: 14px;
   }
 
   .fav-p-element {
-    margin-right: 20px;
+    margin-right: 25px;
   }
 
   .image-container {
     width: auto;
     height: auto;
     object-fit: contain;
+  }
+
+  .inner-div {
+    margin-bottom: 0;
   }
 }

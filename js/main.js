@@ -7,7 +7,9 @@ var xhr = new XMLHttpRequest();
 xhr.open('GET', 'https://lfz-cors.herokuapp.com/?url=' + targetUrl);
 xhr.responseType = 'json';
 xhr.addEventListener('load', function () {
-  $speciesH2.textContent = 'Select a species!';
+  if (selectedSpecies.specName === '') {
+    $speciesH2.textContent = 'Select a species!';
+  }
   for (let i = 0; i < xhr.response.length; i++) {
     var $option = document.createElement('option');
     $option.textContent = xhr.response[i]['Species Name'];
@@ -245,36 +247,49 @@ $leftArrow.addEventListener('click', function (event) {
       selectedSpecies.img = $img.getAttribute('src');
     } else if (currImgSrcL === specImgGall[currImgValL][4].src) {
       $img.setAttribute('src', specImgGall[currImgValL][3].src);
+      selectedSpecies.img = $img.getAttribute('src');
     } else if (currImgSrcL === specImgGall[currImgValL][3].src) {
       $img.setAttribute('src', specImgGall[currImgValL][2].src);
+      selectedSpecies.img = $img.getAttribute('src');
     } else if (currImgSrcL === specImgGall[currImgValL][2].src) {
       $img.setAttribute('src', specImgGall[currImgValL][1].src);
+      selectedSpecies.img = $img.getAttribute('src');
     } else if (currImgSrcL === specImgGall[currImgValL][1].src) {
       $img.setAttribute('src', specImgGall[currImgValL][0].src);
+      selectedSpecies.img = $img.getAttribute('src');
     }
   } else if (Array.isArray(specImgGall[currImgValL]) && specImgGall[currImgValL].length === 4) {
     if (currImgSrcL === specImgGall[currImgValL][0].src) {
       $img.setAttribute('src', specImgGall[currImgValL][3].src);
+      selectedSpecies.img = $img.getAttribute('src');
     } else if (currImgSrcL === specImgGall[currImgValL][3].src) {
       $img.setAttribute('src', specImgGall[currImgValL][2].src);
+      selectedSpecies.img = $img.getAttribute('src');
     } else if (currImgSrcL === specImgGall[currImgValL][2].src) {
       $img.setAttribute('src', specImgGall[currImgValL][1].src);
+      selectedSpecies.img = $img.getAttribute('src');
     } else if (currImgSrcL === specImgGall[currImgValL][1].src) {
       $img.setAttribute('src', specImgGall[currImgValL][0].src);
+      selectedSpecies.img = $img.getAttribute('src');
     }
   } else if (Array.isArray(specImgGall[currImgValL]) && specImgGall[currImgValL].length === 3) {
     if (currImgSrcL === specImgGall[currImgValL][0].src) {
       $img.setAttribute('src', specImgGall[currImgValL][2].src);
+      selectedSpecies.img = $img.getAttribute('src');
     } else if (currImgSrcL === specImgGall[currImgValL][2].src) {
       $img.setAttribute('src', specImgGall[currImgValL][1].src);
+      selectedSpecies.img = $img.getAttribute('src');
     } else if (currImgSrcL === specImgGall[currImgValL][1].src) {
       $img.setAttribute('src', specImgGall[currImgValL][0].src);
+      selectedSpecies.img = $img.getAttribute('src');
     }
   } else if (Array.isArray(specImgGall[currImgValL]) && specImgGall[currImgValL].length === 2) {
     if (currImgSrcL === specImgGall[currImgValL][0].src) {
       $img.setAttribute('src', specImgGall[currImgValL][1].src);
+      selectedSpecies.img = $img.getAttribute('src');
     } else if (currImgSrcL === specImgGall[currImgValL][1].src) {
       $img.setAttribute('src', specImgGall[currImgValL][0].src);
+      selectedSpecies.img = $img.getAttribute('src');
     }
   } else if (currImgSrcL === 'images/no-image-icon-15.png') {
     $loadSpin.setAttribute('class', 'load-spinner hidden');
@@ -292,38 +307,52 @@ $rightArrow.addEventListener('click', function (event) {
   if (Array.isArray(specImgGall[currImgValR]) && specImgGall[currImgValR].length === 5) {
     if (currImgSrcR === specImgGall[currImgValR][0].src) {
       $img.setAttribute('src', specImgGall[currImgValR][1].src);
+      selectedSpecies.img = $img.getAttribute('src');
     } else if (currImgSrcR === specImgGall[currImgValR][1].src) {
       $img.setAttribute('src', specImgGall[currImgValR][2].src);
+      selectedSpecies.img = $img.getAttribute('src');
     } else if (currImgSrcR === specImgGall[currImgValR][2].src) {
       $img.setAttribute('src', specImgGall[currImgValR][3].src);
+      selectedSpecies.img = $img.getAttribute('src');
     } else if (currImgSrcR === specImgGall[currImgValR][3].src) {
       $img.setAttribute('src', specImgGall[currImgValR][4].src);
+      selectedSpecies.img = $img.getAttribute('src');
     } else if (currImgSrcR === specImgGall[currImgValR][4].src) {
       $img.setAttribute('src', specImgGall[currImgValR][0].src);
+      selectedSpecies.img = $img.getAttribute('src');
     }
   } else if (Array.isArray(specImgGall[currImgValR]) && specImgGall[currImgValR].length === 4) {
     if (currImgSrcR === specImgGall[currImgValR][0].src) {
       $img.setAttribute('src', specImgGall[currImgValR][1].src);
+      selectedSpecies.img = $img.getAttribute('src');
     } else if (currImgSrcR === specImgGall[currImgValR][1].src) {
       $img.setAttribute('src', specImgGall[currImgValR][2].src);
+      selectedSpecies.img = $img.getAttribute('src');
     } else if (currImgSrcR === specImgGall[currImgValR][2].src) {
       $img.setAttribute('src', specImgGall[currImgValR][3].src);
+      selectedSpecies.img = $img.getAttribute('src');
     } else if (currImgSrcR === specImgGall[currImgValR][3].src) {
       $img.setAttribute('src', specImgGall[currImgValR][0].src);
+      selectedSpecies.img = $img.getAttribute('src');
     }
   } else if (Array.isArray(specImgGall[currImgValR]) && specImgGall[currImgValR].length === 3) {
     if (currImgSrcR === specImgGall[currImgValR][0].src) {
       $img.setAttribute('src', specImgGall[currImgValR][1].src);
+      selectedSpecies.img = $img.getAttribute('src');
     } else if (currImgSrcR === specImgGall[currImgValR][1].src) {
       $img.setAttribute('src', specImgGall[currImgValR][2].src);
+      selectedSpecies.img = $img.getAttribute('src');
     } else if (currImgSrcR === specImgGall[currImgValR][2].src) {
       $img.setAttribute('src', specImgGall[currImgValR][0].src);
+      selectedSpecies.img = $img.getAttribute('src');
     }
   } else if (Array.isArray(specImgGall[currImgValR]) && specImgGall[currImgValR].length === 2) {
     if (currImgSrcR === specImgGall[currImgValR][0].src) {
       $img.setAttribute('src', specImgGall[currImgValR][1].src);
+      selectedSpecies.img = $img.getAttribute('src');
     } else if (currImgSrcR === specImgGall[currImgValR][1].src) {
       $img.setAttribute('src', specImgGall[currImgValR][0].src);
+      selectedSpecies.img = $img.getAttribute('src');
     }
   } else if (currImgSrcR === 'images/no-image-icon-15.png') {
     $loadSpin.setAttribute('class', 'load-spinner hidden');
@@ -378,8 +407,6 @@ function favSpecies(entry) {
   innerDiv.className = 'inner-div';
   var h2Node = document.createElement('h2');
   h2Node.textContent = entry.title;
-  var innerInnerDiv = document.createElement('div');
-  innerInnerDiv.className = 'inner-inner-div';
   var pNode = document.createElement('p');
   pNode.className = 'fav-p-element';
   pNode.textContent = entry.text.slice(8);
@@ -395,7 +422,6 @@ function favSpecies(entry) {
   mainDiv.appendChild(secondColDiv);
   secondColDiv.appendChild(innerDiv);
   innerDiv.appendChild(h2Node);
-  innerDiv.appendChild(innerInnerDiv);
   secondColDiv.appendChild(pNode);
   var innInnInnDiv = document.createElement('div');
   innInnInnDiv.setAttribute('class', 'column-full inner');
