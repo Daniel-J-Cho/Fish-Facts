@@ -16,10 +16,7 @@
 .column-full.inner {
   display: flex;
   justify-content: flex-end;
-}
-
-.row.view-container {
-  background-color: #f5f7f7;
+  margin-top: 3rem;
 }
 
 .align-center {
@@ -28,24 +25,20 @@
 
 .button {
   width: 10rem;
-  font-size: 14px;
-  background-color: #c4c4c4;
   text-align: center;
+  font-size: 0.9rem;
+  border: none;
   border-radius: 5px;
-  height: 32px;
-  line-height: 32px;
-  margin: 0 5px;
+  line-height: 2rem;
+  margin: 0 0.3125rem;
   cursor: pointer;
 }
 
 .button.active {
   width: 10rem;
-  background-color: #52e0f3;
-  color: white;
   text-align: center;
   border-radius: 5px;
-  height: 32px;
-  line-height: 32px;
+  line-height: 2rem;
   cursor: pointer;
 }
 
@@ -67,13 +60,29 @@
 .species-name-text,
 .taste-text {
   font-size: 0.9rem;
+  margin-left: 0.8rem;
+  margin-right: 0.8rem;
+}
+
+.biology-text-div,
+.calories-text-div,
+.carbohydrates-text-div,
+.cholesterol-text-div,
+.fat-content-text-div,
+.health-benefits-text-div,
+.habitat-text-div,
+.fun-fact-text-div,
+.species-name-text-div,
+.taste-text-div {
+  margin-left: 0.4rem;
+  margin-right: 1.8rem;
 }
 
 .image-arrows-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 0 20px;
+  margin: 0 1.25rem;
 }
 
 .image-container {
@@ -88,7 +97,7 @@
 
 .inner-div {
   display: flex;
-  justify-content: space-between;
+  margin-bottom: 2rem;
 }
 
 .justify-center {
@@ -96,7 +105,7 @@
 }
 
 .li-item {
-  margin-bottom: 50px;
+  margin-bottom: 3.2rem;
 }
 
 .load-spinner {
@@ -105,13 +114,13 @@
 
 .select-button-container {
   display: flex;
-  margin-top: 20px;
+  margin-top: 1.25rem;
 }
 
 .species {
   width: 120px;
   overflow: auto;
-  margin: 0 5px;
+  margin: 0 0.3125rem;
 }
 
 .text-align-center {
@@ -120,13 +129,12 @@
 
 .form {
   position: absolute;
-  bottom: 25px;
+  bottom: 1.2rem;
 }
 
-/* text boxes */
 .species-name-text,
 .calories-text {
-  margin-top: 50px;
+  margin-top: 3.125rem;
 }
 
 .species-name-text,
@@ -135,19 +143,19 @@
 .carbohydrates-text,
 .cholesterol-text,
 .fat-content-text,
-.taste-text {
+.taste-text,
+.health-benefits-text {
   display: flex;
   align-items: center;
-  padding: 0 20px;
+  padding: 0 1.25rem;
 }
 
 .biology-text,
-.habitat-text,
-.health-benefits-text {
+.habitat-text {
   display: flex;
-  padding-top: 10px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-top: 0.625rem;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
 }
 
 @media only screen and (min-width: 768px) {
@@ -206,21 +214,29 @@
     font-size: 12px;
   }
 
+  .column-full.inner {
+    margin-top: 1rem;
+  }
+
   .column-half.first {
-    margin-right: 30px;
+    margin-right: 35px;
   }
 
   .del-button {
-    margin-right: 10px;
+    margin-right: 1rem;
   }
 
   .fav-p-element {
-    margin-right: 20px;
+    margin-right: 25px;
   }
 
   .image-container {
     width: auto;
     height: auto;
     object-fit: contain;
+  }
+
+  .inner-div {
+    margin-bottom: 0;
   }
 }
