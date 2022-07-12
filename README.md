@@ -13,6 +13,7 @@ Try the application live at [https://daniel-j-cho.github.io/Fish-Facts/](https:/
 - HTML5
 - CSS3
 - JavaScript
+- FishWatch.gov Species Content API (https://www.fishwatch.gov/api/species)
 
 ## Features
 
