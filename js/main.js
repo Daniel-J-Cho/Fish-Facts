@@ -430,8 +430,17 @@ function favSpecies(entry) {
   return liNode;
 }
 
+var $containerTwo = document.querySelector('.container-two');
+
+function displayModal(event) {
+  if ($containerTwo.className === 'container-two hidden') {
+    $containerTwo.className = 'container-two';
+  }
+}
+
 $ul.addEventListener('click', function (event) {
   if (event.target.matches('.del-button')) {
+    displayModal();
     var nextEntryIdStr = event.target.getAttribute('data-entry-id');
     var nextEntryIdNum = parseInt(nextEntryIdStr, 10);
     for (var j = 0; j < dataFish.entries.length; j++) {
@@ -448,8 +457,11 @@ $ul.addEventListener('click', function (event) {
         $listNodes[i].remove();
       }
     }
+
   }
 });
+
+// $delButton.addEventListener('click', displayModal);
 
 document.addEventListener('DOMContentLoaded', function (event) {
   for (let i = 0; i < dataFish.entries.length; i++) {
