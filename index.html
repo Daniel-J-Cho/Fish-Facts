@@ -38,10 +38,10 @@
         <select name="species" id="species" class="species">
           <option value="" disabled selected>Select a species</option>
         </select>
-        <button class="button active" data-view="images">Images</button>
-        <button class="button" data-view="general">General</button>
-        <button class="button" data-view="nutritional">Nutrition</button>
-        <button class="button" data-view="favorites">Favorites</button>
+        <a href="#images" class="button active" data-view="images">Images</a>
+        <a href="#general" class="button" data-view="general">General</a>
+        <a href="#nutrition" class="button" data-view="nutritional">Nutrition</a>
+        <a href="#favorites" class="button" data-view="favorites">Favorites</a>
       </div>
       <div class="row view-container">
         <div class="view column-full" data-view="images">
@@ -119,6 +119,17 @@
         </div>
       </div>
     </main>
+  </div>
+  <div class="container-two hidden">
+    <div id="modal" class="modal">
+      <div class="modal-buttons">
+        <p>Are you sure you want to delete this favorite?</p>
+        <div class="delete-buttons">
+          <button class="cancel-button">CANCEL</button>
+          <button type="button" class="confirm-delete-button">CONFIRM</button>
+        </div>
+      </div>
+    </div>
   </div>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
