@@ -446,7 +446,7 @@ function hideModal(event) {
   }
 }
 
-$ul.addEventListener('click', function (event) {
+$ul.addEventListener('click', event => {
   if (event.target.matches('.del-button')) {
     displayModal();
     $confirmDeleteButton.setAttribute('data-entry-id', event.target.getAttribute('data-entry-id'));
@@ -472,6 +472,8 @@ $ul.addEventListener('click', function (event) {
   }
   $cancelButton.addEventListener('click', hideModal);
 });
+
+$containerTwo.addEventListener('click', hideModal);
 
 document.addEventListener('DOMContentLoaded', function (event) {
   for (let i = 0; i < dataFish.entries.length; i++) {

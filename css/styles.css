@@ -19,23 +19,29 @@ h1 {
 
 .button {
   background-color: #c4c4c4;
+  text-decoration: none;
+  color: rgb(42, 45, 1);
+  font-family: sans-serif;
 }
 
 .button.active {
   background-color: #52e0f3;
   color: white;
+  font-family: sans-serif;
 }
 
 .cancel-button {
   border: none;
   border-radius: 0.3125rem;
   color: white;
+  cursor: pointer;
 }
 
 .confirm-delete-button {
   border: none;
   border-radius: 0.3125rem;
   color: white;
+  cursor: pointer;
 }
 
 .row {
