@@ -26,6 +26,18 @@ h1 {
   color: white;
 }
 
+.cancel-button {
+  border: none;
+  border-radius: 0.3125rem;
+  color: white;
+}
+
+.confirm-delete-button {
+  border: none;
+  border-radius: 0.3125rem;
+  color: white;
+}
+
 .row {
   display: flex;
   flex-wrap: wrap;

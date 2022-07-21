@@ -6,6 +6,7 @@
   max-width: 575px;
   margin: 0 auto;
   position: relative;
+  z-index: 0;
 }
 
 .container-two {
@@ -15,8 +16,8 @@
   z-index: 1;
   height: 100vh;
   width: 100%;
-  bottom: 12%;
-  left: 19.3%;
+  bottom: 0;
+  left: 0;
 }
 
 .column-full,
@@ -150,8 +151,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 23rem;
-  height: 9.5rem;
+  width: 24rem;
+  height: 10.5rem;
   z-index: 1;
   border-radius: 0.3125rem;
   background-color: white;

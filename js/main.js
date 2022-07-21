@@ -431,6 +431,8 @@ function favSpecies(entry) {
 }
 
 var $containerTwo = document.querySelector('.container-two');
+var $confirmDeleteButton = document.querySelector('.confirm-delete-button');
+var $cancelButton = document.querySelector('.cancel-button');
 
 function displayModal(event) {
   if ($containerTwo.className === 'container-two hidden') {
@@ -438,30 +440,38 @@ function displayModal(event) {
   }
 }
 
+function hideModal(event) {
+  if ($containerTwo.className === 'container-two') {
+    $containerTwo.className = 'container-two hidden';
+  }
+}
+
 $ul.addEventListener('click', function (event) {
   if (event.target.matches('.del-button')) {
     displayModal();
-    var nextEntryIdStr = event.target.getAttribute('data-entry-id');
-    var nextEntryIdNum = parseInt(nextEntryIdStr, 10);
-    for (var j = 0; j < dataFish.entries.length; j++) {
-      if (nextEntryIdNum === dataFish.entries[j].entryId) {
-        dataFish.editing = dataFish.entries[j];
+    $confirmDeleteButton.setAttribute('data-entry-id', event.target.getAttribute('data-entry-id'));
+    $confirmDeleteButton.addEventListener('click', event => {
+      var nextEntryIdStr = $confirmDeleteButton.getAttribute('data-entry-id');
+      var nextEntryIdNum = parseInt(nextEntryIdStr, 10);
+      for (var j = 0; j < dataFish.entries.length; j++) {
+        if (nextEntryIdNum === dataFish.entries[j].entryId) {
+          dataFish.editing = dataFish.entries[j];
+        }
       }
-    }
-    var currEntryId = dataFish.editing.entryId;
-    var currEntryNum = parseInt(currEntryId, 10);
-    var $listNodes = document.querySelectorAll('.li-item');
-    for (let i = 0; i < dataFish.entries.length; i++) {
-      if (currEntryNum === dataFish.entries[i].entryId) {
-        dataFish.entries.splice(i, 1);
-        $listNodes[i].remove();
+      var currEntryId = dataFish.editing.entryId;
+      var currEntryNum = parseInt(currEntryId, 10);
+      var $listNodes = document.querySelectorAll('.li-item');
+      for (let i = 0; i < dataFish.entries.length; i++) {
+        if (currEntryNum === dataFish.entries[i].entryId) {
+          dataFish.entries.splice(i, 1);
+          $listNodes[i].remove();
+        }
       }
-    }
-
+      $containerTwo.className = 'container-two hidden';
+    });
   }
+  $cancelButton.addEventListener('click', hideModal);
 });
-
-// $delButton.addEventListener('click', displayModal);
 
 document.addEventListener('DOMContentLoaded', function (event) {
   for (let i = 0; i < dataFish.entries.length; i++) {
