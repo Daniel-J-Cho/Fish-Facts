@@ -35,12 +35,14 @@ var $img = document.querySelector('.species-image');
 var $selButtonContainer = document.querySelector('.select-button-container');
 var $buttons = document.querySelectorAll('.button');
 var $views = document.querySelectorAll('.view');
+var $selectedButton;
 
 $selButtonContainer.addEventListener('click', function (event) {
   if (event.target.matches('.button')) {
     for (var i = 0; i < $buttons.length; i++) {
       if (event.target === $buttons[i]) {
         $buttons[i].className = 'button active';
+        $selectedButton = $buttons[i];
       } else {
         $buttons[i].className = 'button';
       }
@@ -230,6 +232,16 @@ $species.addEventListener('change', function (event) {
         }
       }
     }
+  }
+  if (event.target.matches('.species') && $selectedButton === $buttons[3]) {
+    $buttons[0].setAttribute('class', 'button active');
+    $buttons[1].setAttribute('class', 'button');
+    $buttons[2].setAttribute('class', 'button');
+    $buttons[3].setAttribute('class', 'button');
+    $views[0].setAttribute('class', 'view column-full');
+    $views[1].setAttribute('class', 'view column-full hidden');
+    $views[2].setAttribute('class', 'view column-full hidden');
+    $views[3].setAttribute('class', 'view column-full hidden');
   }
 });
 
