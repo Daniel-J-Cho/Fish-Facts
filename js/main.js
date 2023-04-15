@@ -36,6 +36,10 @@ var $selButtonContainer = document.querySelector('.select-button-container');
 var $buttons = document.querySelectorAll('.button');
 var $views = document.querySelectorAll('.view');
 var $selectedButton;
+var dataSelButtonContainer;
+
+const buttonsArray = Array.from($buttons);
+const viewsArray = Array.from($views);
 
 $selButtonContainer.addEventListener('click', function (event) {
   if (event.target.matches('.button')) {
@@ -43,17 +47,26 @@ $selButtonContainer.addEventListener('click', function (event) {
       if (event.target === $buttons[i]) {
         $buttons[i].className = 'button active';
         $selectedButton = $buttons[i];
+        buttonsArray[i].setAttribute('class', 'button active');
       } else {
         $buttons[i].className = 'button';
+        buttonsArray[i].setAttribute('class', 'button');
       }
     }
     var dataViewVal = event.target.getAttribute('data-view');
     for (var j = 0; j < $views.length; j++) {
       if (dataViewVal === $views[j].getAttribute('data-view')) {
         $views[j].className = 'view column-full';
+        viewsArray[j].setAttribute('class', 'view column-full');
       } else {
         $views[j].className = 'view column-full hidden';
+        viewsArray[j].setAttribute('class', 'view column-full hidden');
       }
+    }
+
+    for (let k = 0; k < buttonsArray.length; k++) {
+      dataSelButtonContainer.buttons[k] = buttonsArray[k].getAttribute('class');
+      dataSelButtonContainer.views[k] = viewsArray[k].getAttribute('class');
     }
   }
 });
@@ -505,4 +518,9 @@ document.addEventListener('DOMContentLoaded', function (event) {
   $fatContentText.textContent = selectedSpecies.fatContentText;
   $healthBenefitsText.textContent = selectedSpecies.healthBenefitsText;
   $tasteText.textContent = selectedSpecies.tasteText;
+
+  for (let j = 0; j < $buttons.length; j++) {
+    $buttons[j].className = dataSelButtonContainer.buttons[j];
+    $views[j].className = dataSelButtonContainer.views[j];
+  }
 });
