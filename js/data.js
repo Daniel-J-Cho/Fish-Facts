@@ -40,3 +40,18 @@ window.addEventListener('beforeunload', function (event) {
   var dataSpecies = JSON.stringify(selectedSpecies);
   this.localStorage.setItem('js-local-storage-3', dataSpecies);
 });
+
+var dataSelButtonContainer = {
+  buttons: [],
+  views: []
+};
+
+var savedSettings = localStorage.getItem('js-local-storage-buttons-views');
+if (savedSettings !== null) {
+  dataSelButtonContainer = JSON.parse(savedSettings);
+}
+
+window.addEventListener('beforeunload', function () {
+  var savedSettingsObject = JSON.stringify(dataSelButtonContainer);
+  this.localStorage.setItem('js-local-storage-buttons-views', savedSettingsObject);
+});
