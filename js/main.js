@@ -1,4 +1,5 @@
 // requesting API for data and populating scrollbar with 'Species Name' data
+
 var specImgGall = {};
 var targetUrl = encodeURIComponent('https://www.fishwatch.gov/api/species');
 var $species = document.getElementById('species');
@@ -30,6 +31,20 @@ window.addEventListener('error', function () {
   }
 });
 xhr.send();
+
+var $fishEmoji = document.querySelector('.fish-emoji');
+
+var gsap;
+
+gsap.to($fishEmoji, {
+  keyframes: {
+    x: ['100vw', '75vw', '50vw', '25vw', '-10vw'],
+    y: [0, 11, 5, 1, -3, 11, -2],
+    easeEach: 'sine.inOut'
+  },
+  repeat: -1,
+  duration: 9
+});
 
 var $img = document.querySelector('.species-image');
 var $selButtonContainer = document.querySelector('.select-button-container');

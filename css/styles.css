@@ -1,38 +1,6 @@
 .fish-emoji {
-  animation-name: fish-emoji;
-  animation-direction: alternate;
-  animation-iteration-count: infinite;
-  animation-duration: 5s;
   width: 2%;
   height: auto;
-}
-
-@keyframes fish-emoji {
-  from {
-    margin-left: 100%;
-    margin-top: 6%;
-  }
-
-  25% {
-    margin-left: 75%;
-    margin-top: 8%;
-  }
-
-  50% {
-    margin-left: 50%;
-    margin-top: 6%;
-  }
-
-  75% {
-    margin-left: 25%;
-    margin-top: 8%;
-  }
-
-  to {
-    margin-left: 0%;
-    margin-top: 6%;
-    transform: rotateY(180deg);
-  }
 }
 
 body {
