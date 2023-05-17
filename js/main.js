@@ -32,18 +32,31 @@ window.addEventListener('error', function () {
 });
 xhr.send();
 
-var $fishEmoji = document.querySelector('.fish-emoji');
+var $goldfish = document.querySelector('.goldfish');
+var $piranha = document.querySelector('.piranha');
 
 var gsap;
 
-gsap.to($fishEmoji, {
+gsap.to($goldfish, {
   keyframes: {
     x: ['100vw', '75vw', '50vw', '25vw', '-10vw'],
     y: [0, 11, 5, 1, -3, 11, -2],
     easeEach: 'sine.inOut'
   },
   repeat: -1,
-  duration: 9
+  duration: 11,
+  repeatDelay: 2
+});
+
+gsap.to($piranha, {
+  keyframes: {
+    x: ['0vw', '25vw', '50vw', '75vw', '105vw'],
+    y: [125, 136, 130, 136, 123, 136, 124],
+    easeEach: 'sine.inOut'
+  },
+  repeat: -1,
+  duration: 11,
+  repeatDelay: 1
 });
 
 var $img = document.querySelector('.species-image');
