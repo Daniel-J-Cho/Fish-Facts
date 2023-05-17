@@ -117,12 +117,8 @@ li {
 main {
   width: 95%;
   height: 47rem;
-  background-color: #f5f7f7;
+  background-color: rgba(150, 150, 150, 0.2);
   margin: 3rem auto;
-}
-
-.row.view-container {
-  background-color: #f5f7f7;
 }
 
 .select-button-container {
@@ -191,4 +187,8 @@ select {
 
 .health-benefits-text {
   height: 4rem;
+}
+
+.unordered-list {
+  background-color: rgba(150, 150, 150, 0.4);
 }
