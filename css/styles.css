@@ -3,6 +3,11 @@
   height: auto;
 }
 
+.shark-emoji {
+  width: 10%;
+  height: auto;
+}
+
 body {
   background-color: #df4548;
   font-family: Lora, serif;
@@ -117,8 +122,11 @@ li {
 main {
   width: 95%;
   height: 47rem;
-  background-color: rgba(150, 150, 150, 0.2);
   margin: 3rem auto;
+}
+
+.row.view-container {
+  background-color: rgba(252, 255, 255, 0.5);
 }
 
 .select-button-container {
@@ -187,8 +195,4 @@ select {
 
 .health-benefits-text {
   height: 4rem;
-}
-
-.unordered-list {
-  background-color: rgba(150, 150, 150, 0.4);
 }

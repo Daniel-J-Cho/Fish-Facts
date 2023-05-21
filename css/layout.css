@@ -88,6 +88,8 @@
   justify-content: center;
   align-items: center;
   margin: auto;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 
 .fish-emoji {
@@ -172,6 +174,11 @@
 
 .modal-buttons {
   padding-top: 0.625rem;
+}
+
+.piranha {
+  position: absolute;
+  left: -2rem;
 }
 
 .select-button-container {
