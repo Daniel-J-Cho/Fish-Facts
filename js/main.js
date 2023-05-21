@@ -70,28 +70,6 @@ tl.to($goldfish, {
     repeatDelay: 1
   }, '>-=10');
 
-// gsap.to($goldfish, {
-//   keyframes: {
-//     x: ['100vw', '75vw', '50vw', '25vw', '-10vw'],
-//     y: [0, 11, 5, 1, -3, 11, -2],
-//     easeEach: 'sine.inOut'
-//   },
-//   repeat: -1,
-//   duration: 11,
-//   repeatDelay: 2
-// });
-
-// gsap.to($piranha, {
-//   keyframes: {
-//     x: ['0vw', '25vw', '50vw', '75vw', '105vw'],
-//     y: [125, 136, 130, 136, 123, 136, 124],
-//     easeEach: 'sine.inOut'
-//   },
-//   repeat: -1,
-//   duration: 11,
-//   repeatDelay: 1
-// });
-
 var $img = document.querySelector('.species-image');
 var $selButtonContainer = document.querySelector('.select-button-container');
 var $buttons = document.querySelectorAll('.button');
