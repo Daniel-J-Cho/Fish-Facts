@@ -34,10 +34,12 @@ xhr.send();
 
 var $goldfish = document.querySelector('.goldfish');
 var $piranha = document.querySelector('.piranha');
+var $shortfin = document.querySelector('.shortfin-mako');
 
 var gsap;
+var tl = gsap.timeline();
 
-gsap.to($goldfish, {
+tl.to($goldfish, {
   keyframes: {
     x: ['100vw', '75vw', '50vw', '25vw', '-10vw'],
     y: [0, 11, 5, 1, -3, 11, -2],
@@ -46,18 +48,27 @@ gsap.to($goldfish, {
   repeat: -1,
   duration: 11,
   repeatDelay: 2
-});
-
-gsap.to($piranha, {
-  keyframes: {
-    x: ['0vw', '25vw', '50vw', '75vw', '105vw'],
-    y: [125, 136, 130, 136, 123, 136, 124],
-    easeEach: 'sine.inOut'
-  },
-  repeat: -1,
-  duration: 11,
-  repeatDelay: 1
-});
+})
+  .to($piranha, {
+    keyframes: {
+      x: ['-5vw', '25vw', '50vw', '75vw', '105vw'],
+      y: [125, 136, 130, 136, 123, 136, 124],
+      easeEach: 'sine.inOut'
+    },
+    repeat: -1,
+    duration: 11,
+    repeatDelay: 1
+  }, '-=5')
+  .to($shortfin, {
+    keyframes: {
+      x: ['105vw', '80vw', '60vw', '40vw', '20vw', '0vw', '-10vw'],
+      y: [350, 360, 355, 343, 350, 360, 350],
+      easeEach: 'sine.inOut'
+    },
+    repeat: -1,
+    duration: 14,
+    repeatDelay: 1
+  }, '>-=10');
 
 var $img = document.querySelector('.species-image');
 var $selButtonContainer = document.querySelector('.select-button-container');
