@@ -186,6 +186,11 @@
   margin-top: 1.25rem;
 }
 
+.shortfin-mako {
+  position: absolute;
+  right: -10rem;
+}
+
 .species {
   width: 120px;
   overflow: auto;

@@ -61,12 +61,12 @@ tl.to($goldfish, {
   }, '-=5')
   .to($shortfin, {
     keyframes: {
-      x: ['105vw', '80vw', '60vw', '40vw', '20vw', '0vw', '-10vw'],
+      x: ['5vw', '-10vw', '-40vw', '-60vw', '-80vw', '-100vw', '-115vw'],
       y: [350, 360, 355, 343, 350, 360, 350],
       easeEach: 'sine.inOut'
     },
     repeat: -1,
-    duration: 14,
+    duration: 10,
     repeatDelay: 1
   }, '>-=10');
 
