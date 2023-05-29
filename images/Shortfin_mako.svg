@@ -137,12 +137,12 @@
        d="M 216.02112,396.69742 A 2.4748738,2.4748738 0 1 1 211.07138,396.69742 A 2.4748738,2.4748738 0 1 1 216.02112,396.69742 z"
        transform="translate(-8.8388347e-2,-0.265165)" />
     <path
-       style="fill:#808080;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.61199999;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.61199999;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="M 201.34865,398.73034 C 201.84269,399.86608 202.53145,399.57483 202.20049,400.79018 C 202.1345,400.99795 201.72192,402.0165 201.59428,402.19449 C 201.03961,402.67697 199.84963,402.92049 199.29495,403.40297"
        id="path3347"
        sodipodi:nodetypes="cccc" />
     <path
-       style="fill:#808080;fill-opacity:0.75;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1"
+       style="fill:#000000;fill-opacity:0.75;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-linecap:round;stroke-linejoin:miter;stroke-opacity:1"
        d="M 210.92091,406.466 C 214.11666,406.06861 217.63945,405.91008 220.77041,406.23384 C 223.90137,406.55759 226.58405,407.10849 229.54454,408.27629"
        id="path3350"
        sodipodi:nodetypes="czc" />
