@@ -18,7 +18,8 @@
 }
 
 body {
-  background-color: #3d4a6d;
+  background-image: url("/images/fish-facts-background-img.svg");
+  background-size: cover;
   font-family: Lora, serif;
 }
 
