@@ -35,6 +35,7 @@ xhr.send();
 var $goldfish = document.querySelector('.goldfish');
 var $piranha = document.querySelector('.piranha');
 var $shortfin = document.querySelector('.shortfin-mako');
+var $purplefish = document.querySelector('.purplefish');
 
 var gsap;
 var tl = gsap.timeline();
@@ -66,9 +67,19 @@ tl.to($goldfish, {
       easeEach: 'sine.inOut'
     },
     repeat: -1,
-    duration: 10,
+    duration: 12,
     repeatDelay: 1
-  }, '>-=10');
+  }, '>-=10')
+  .to($purplefish, {
+    keyframes: {
+      x: ['-5vw', '20vw', '45vw', '70vw', '95vw', '105vw'],
+      y: [500, 495, 490, 500, 485, 470],
+      easeEach: 'sine.out'
+    },
+    repeat: -1,
+    duration: 9,
+    repeatDelay: 5
+  }, '<+=2');
 
 var $img = document.querySelector('.species-image');
 var $selButtonContainer = document.querySelector('.select-button-container');
