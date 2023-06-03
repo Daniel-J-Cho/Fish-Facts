@@ -3,13 +3,23 @@
   height: auto;
 }
 
+.fish-emoji2 {
+  width: 5%;
+  height: auto;
+}
+
 .shark-emoji {
   width: 10%;
   height: auto;
 }
 
+.purplefish {
+  transform: rotateY(180deg);
+}
+
 body {
-  background-color: #df4548;
+  background-image: url("/images/fish-facts-background-img.svg");
+  background-size: cover;
   font-family: Lora, serif;
 }
 
@@ -65,7 +75,7 @@ h1 {
 
 .column-full.header {
   display: flex;
-  background-color: #0d7e39;
+  background-color: #3d4a6d;
   color: white;
   max-width: auto;
 }

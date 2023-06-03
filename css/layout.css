@@ -181,6 +181,11 @@
   left: -2rem;
 }
 
+.purplefish {
+  position: absolute;
+  left: -5rem;
+}
+
 .select-button-container {
   display: flex;
   margin-top: 1.25rem;
